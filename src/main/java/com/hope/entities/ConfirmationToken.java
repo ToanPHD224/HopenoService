@@ -21,7 +21,7 @@ public class ConfirmationToken {
 	private String confirmation_token;
 	@Column(name = "createdDate")
 	private Date createdDate;
-	@OneToOne // Đánh dấu có mỗi quan hệ 1-1 với Person ở phía dưới
+	@OneToOne 
 	@JoinColumn(name = "account_id")
 	private Account account;
 	public long getId() {
