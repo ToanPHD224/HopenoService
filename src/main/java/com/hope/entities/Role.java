@@ -1,4 +1,5 @@
 package com.hope.entities;
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,11 +11,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar")
 	private String name;
 	@OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
 	private Set<Account> account;

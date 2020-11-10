@@ -1,5 +1,6 @@
 package com.hope.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,11 +15,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ward")
-public class Ward {
+public class Ward implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar")
 	private String name;
 	@ManyToOne
 	@JoinColumn(name = "districs_id")

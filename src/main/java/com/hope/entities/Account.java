@@ -1,5 +1,6 @@
 package com.hope.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,17 +17,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "account")
-public class Account {
+public class Account implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "address")
+	@Column(name = "address",columnDefinition = "nvarchar")
 	private String address;
 	@Column(name = "created_at")
 	private Date created_at;
-	@Column(name = "mail")
+	@Column(name = "mail",columnDefinition = "nvarchar")
 	private String mail;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar")
 	private String name;
 	@Column(name = "password")
 	private String password;
