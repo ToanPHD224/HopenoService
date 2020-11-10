@@ -1,5 +1,6 @@
 package com.hope.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sportfiled")
-public class SportField {
+public class SportField implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;

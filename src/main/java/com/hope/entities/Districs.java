@@ -1,5 +1,6 @@
 package com.hope.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,11 +14,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "districs")
-public class Districs {
+public class Districs implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar")
 	private String name;
 	@OneToMany(mappedBy = "districs",cascade = CascadeType.ALL)
 	private Set<Ward> ward;

@@ -1,5 +1,7 @@
 package com.hope.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,11 +13,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "feedback")
-public class FeedBack {
+public class FeedBack implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "content")
+	@Column(name = "content",columnDefinition = "nvarchar")
 	private String content;
 	@Column(name = "rating")
 	private float rating;

@@ -1,5 +1,6 @@
 package com.hope.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,13 +14,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "service_fee")
-public class ServiceFee {
+public class ServiceFee implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name = "booking_fee")
 	private float booking_Fee;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar")
 	private String name;
 	@OneToMany(mappedBy = "servicefee",cascade = CascadeType.ALL)
 	private Set<Service> service;

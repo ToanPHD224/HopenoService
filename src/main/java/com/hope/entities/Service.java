@@ -1,5 +1,6 @@
 package com.hope.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,19 +16,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "service")
-public class Service {
+public class Service implements Serializable {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private long id;
-	@Column(name = "address")
+	@Column(name = "address",columnDefinition = "nvarchar")
 	private String address;
-	@Column(name = "content")
+	@Column(name = "content",columnDefinition = "nvarchar")
 	private String content;
-	@Column(name = "image")
+	@Column(name = "image",columnDefinition = "nvarchar")
 	private String image;
 	@Column(name = "additionalfee")
 	private float addtionalfee;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar")
 	private String name;
 	@Column(name = "status")
 	private boolean status;
