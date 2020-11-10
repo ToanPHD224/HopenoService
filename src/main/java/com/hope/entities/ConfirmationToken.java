@@ -2,6 +2,7 @@ package com.hope.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -66,6 +67,12 @@ public class ConfirmationToken implements Serializable {
 		this.confirmation_token = confirmation_token;
 		this.createdDate = createdDate;
 		this.account = account;
+	}
+	public ConfirmationToken(Account account) {
+		super();
+		this.account = account;
+		createdDate = new Date();
+		confirmation_token = UUID.randomUUID().toString();
 	}
 	
 }

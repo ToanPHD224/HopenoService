@@ -44,4 +44,10 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
 		
 	}
 
+	@Override
+	public ConfirmationToken getConfirmationTokenByToken(String token) {
+		// TODO Auto-generated method stub
+		return confrim.getConfirmationTokenByToken(token);
+	}
+
 }

@@ -42,4 +42,10 @@ public class AccountServiceImpl implements AccountService {
 		
 	}
 
+	@Override
+	public Account getAccountByMail(String mail) {
+		// TODO Auto-generated method stub
+		return accountRepo.getAccountByMail(mail);
+	}
+
 }
