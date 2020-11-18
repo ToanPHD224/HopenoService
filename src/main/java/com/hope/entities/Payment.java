@@ -90,7 +90,10 @@ public class Payment implements Serializable {
 	public void setSportfield(SportField sportfield) {
 		this.sportfield = sportfield;
 	}
-	public Payment() {}
+	public Payment() {
+		// 0 is dang cho , 1 da xac nhan , 2 la huy bo
+		this.status =0;
+	}
 	public Payment(long id, float amount, Date create_date, int status, float _start, float _end, Date date,
 			Account account, SportField sportfield) {
 		super();

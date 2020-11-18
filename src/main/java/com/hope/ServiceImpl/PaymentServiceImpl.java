@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hope.Repository.PaymentRepo;
 import com.hope.Service.PaymentService;
+import com.hope.Service.ServiceService;
 import com.hope.entities.Payment;
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -41,5 +42,16 @@ public class PaymentServiceImpl implements PaymentService {
 		paymentrp.delete(entites);
 		
 	}
+	@Autowired 
+	private ServiceService s;
+	@Override
+	public float getAmountByServiceAndTime(float _start, float duration, long service) {
+		com.hope.entities.Service s1 = s.getById(service);
+		float fee =  paymentrp.getAmountByServiceAndTime(_start, _start+duration, service);
+		float totalfee = fee + ((s1.getAddtionalfee()/100)*fee);
+		return totalfee;
+	}
+
+
 
 }

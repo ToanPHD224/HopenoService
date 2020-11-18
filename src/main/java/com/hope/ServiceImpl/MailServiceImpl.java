@@ -21,7 +21,7 @@ public class MailServiceImpl implements MailService  {
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setFrom("zockkidpro@gmail.com");
         mailMessage.setText("To confirm your account, please click here : "
-        +"http://localhost:8091/confirm-account/"+c.getConfirmation_token());
+        +"http://localhost:8090/confirm-account/"+c.getConfirmation_token());
         sendConfirm(mailMessage);
 	}
 	

@@ -1,6 +1,8 @@
 package com.hope.ServiceImpl;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,4 +44,16 @@ public class SportFieldServiceImpl implements SportFieldService{
 		spfr.delete(entites);
 	}
 
+	@Override
+	public List<SportField> getAllSportFiledVaildByService(long id, Date date, float start, float end) {
+		// TODO Auto-generated method stub
+		return spfr.getAllSportFiledVaildByService(id, date, start, end);
+	}
+	
+	@Override
+	public SportField getRandomSportFiled(List<SportField> list) {
+		Random rand = new Random(); 
+        SportField sp = list.get(rand.nextInt(list.size()));
+		return sp; 
+	}
 }

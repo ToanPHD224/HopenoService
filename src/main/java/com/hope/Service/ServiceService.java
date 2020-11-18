@@ -1,7 +1,14 @@
 package com.hope.Service;
 
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.ui.ModelMap;
+
 import com.hope.entities.Service;
 
 public interface ServiceService extends CrudEnties<Service> {
-
+	public List<Service> getAllServiceFromDateAndTime(Date date ,float start , float end );
+	public List<Service> getAllServiceByDateTimeAndDistric(String quan,Date date ,float start,float end);
+	public List<Service> getAllServiceForArtibiue(String quan,String date ,float start,float end);
 }

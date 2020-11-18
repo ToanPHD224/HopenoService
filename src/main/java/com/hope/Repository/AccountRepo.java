@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.hope.entities.Account;
 @Repository
 public interface AccountRepo extends JpaRepository<Account, Long> {
-	@Query(value ="Select * from account  where mail =: mail" ,  nativeQuery = true)
+	@Query(value ="Select * from account  where mail =:mail and status = 1"  ,  nativeQuery = true)
 	public Account getAccountByMail(@Param("mail") String mail);
 }

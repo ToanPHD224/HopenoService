@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        http
 	            .authorizeRequests()
 	                .antMatchers("/**").permitAll()
+	                .antMatchers("/resources/**").permitAll()
 	                .anyRequest().authenticated()
 	                .and()
 		            // Cho phép người dùng xác thực bằng form login
