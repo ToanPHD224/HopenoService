@@ -1,5 +1,6 @@
 package com.hope.ServiceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,20 @@ public class PaymentServiceImpl implements PaymentService {
 		return totalfee;
 	}
 
+	@Override
+	public List<Payment> getAllPaymentByMonth(Date startDate, Date endDate) {
+		// TODO Auto-generated method stub
+		return paymentrp.getAllPaymentByMonth(startDate, endDate);
+	}
+
+	@Override
+	public List<Payment> getAllPayMent(Date startDate, Date endDate, long idservice) {
+		// TODO Auto-generated method stub
+		return paymentrp.getAllPayMent(startDate, endDate,  idservice);
+	}
+	
+
+	
 
 
 }

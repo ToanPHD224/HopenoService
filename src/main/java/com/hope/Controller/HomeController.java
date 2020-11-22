@@ -42,10 +42,10 @@ public class HomeController {
 	{
 		return "/customer/contact";
 	}
-	@GetMapping("/home")
+	@GetMapping("/admin/home")
 	public String getHome()
 	{
-		return "/customer/index";
+		return "/admin/index";
 	}
 	@GetMapping("/login")
 	public String getLogin()

@@ -1,11 +1,14 @@
 package com.hope.ServiceImpl;
 
+import java.awt.print.Pageable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -83,6 +86,24 @@ public class ServiceServiceImpl implements ServiceService {
 			listService = getAllServiceByDateTimeAndDistric(quan, dateHelpService.convetDatetoSql(date), start, end);
 		} 
 		return listService;
+	}
+
+	@Override
+	public List<Service> getAllRegistationServive(Date date) {
+		// TODO Auto-generated method stub
+		return servicerepo.getAllRegistationServive(date);
+	}
+
+	@Override
+	public Page<Service> findAll(int page) {
+		org.springframework.data.domain.Pageable pageable = PageRequest.of(page, 2);
+		return servicerepo.findAll(pageable);
+	}
+
+	@Override
+	public Page<Service> findAllByRegistedAt(org.springframework.data.domain.Pageable page, Date date) {
+		// TODO Auto-generated method stub
+		return servicerepo.findAllByRegistedAt(page, date);
 	}
 
 }

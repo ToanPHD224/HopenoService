@@ -19,7 +19,7 @@ public class Role implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "name",columnDefinition = "nvarchar")
+	@Column(name = "name")
 	private String name;
 	@OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
 	private Set<Account> account;

@@ -1,6 +1,7 @@
 package com.hope.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,24 +15,34 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.core.sym.Name;
+
 @Entity
 @Table(name = "service")
 public class Service implements Serializable {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private long id;
-	@Column(name = "address",columnDefinition = "nvarchar")
+	@Column(name = "address")
 	private String address;
-	@Column(name = "content",columnDefinition = "nvarchar")
+	@Column(name = "content")
 	private String content;
-	@Column(name = "image",columnDefinition = "nvarchar")
+	@Column(name = "image")
 	private String image;
 	@Column(name = "additionalfee")
 	private float addtionalfee;
-	@Column(name = "name",columnDefinition = "nvarchar")
+	@Column(name = "name")
 	private String name;
+	@Column(name = "email")
+	private String mail;
+	@Column(name = "viewer")
+	private float viewer;
 	@Column(name = "status")
 	private boolean status;
+	@Column(name = "createdat")
+	private Date createdAt;
+	@Column(name = "registedat")
+	private Date registedAt;
 	@ManyToOne
 	@JoinColumn(name = "account_id")
 	private Account account;
@@ -47,11 +58,46 @@ public class Service implements Serializable {
 	private Set<FeedBack> feedback;
 	@OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
 	private Set<SportField> sportFields;
+	@OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
+	private Set<ServicePayment> servicePayment;
 	
+	
+	public float getViewer() {
+		return viewer;
+	}
+
+	public void setViewer(float viewer) {
+		this.viewer = viewer;
+	}
+
+	public Set<ServicePayment> getServicePayment() {
+		return servicePayment;
+	}
+
+	public void setServicePayment(Set<ServicePayment> servicePayment) {
+		this.servicePayment = servicePayment;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getRegistedAt() {
+		return registedAt;
+	}
+
+	public void setRegistedAt(Date registedAt) {
+		this.registedAt = registedAt;
+	}
+
 	public long getId() {
 		return id;
 	}
-
+		
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -82,6 +128,15 @@ public class Service implements Serializable {
 
 	public float getAddtionalfee() {
 		return addtionalfee;
+	}
+	
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public void setAddtionalfee(float addtionalfee) {
@@ -174,8 +229,9 @@ public class Service implements Serializable {
 	}
 
 	public Service(String address, String content, String image, float addtionalfee, String name, boolean status,
-			Account account, ServiceFee servicefee, Ward ward, Set<ServiceSettings> servicesettings,
-			Set<FeedBack> feedback, Set<SportField> sportFields) {
+			Date createdAt, Date registedAt, Account account, ServiceFee servicefee, Ward ward,
+			Set<ServiceSettings> servicesettings, Set<FeedBack> feedback, Set<SportField> sportFields,
+			Set<ServicePayment> servicePayment) {
 		super();
 		this.address = address;
 		this.content = content;
@@ -183,14 +239,43 @@ public class Service implements Serializable {
 		this.addtionalfee = addtionalfee;
 		this.name = name;
 		this.status = status;
+		this.createdAt = createdAt;
+		this.registedAt = registedAt;
 		this.account = account;
 		this.servicefee = servicefee;
 		this.ward = ward;
 		this.servicesettings = servicesettings;
 		this.feedback = feedback;
 		this.sportFields = sportFields;
+		this.servicePayment = servicePayment;
 	}
+
+	public Service(String address, String content, String image, float addtionalfee, String name, float viewer,
+			boolean status, Date createdAt, Date registedAt, Account account, ServiceFee servicefee, Ward ward,
+			Set<ServiceSettings> servicesettings, Set<FeedBack> feedback, Set<SportField> sportFields,
+			Set<ServicePayment> servicePayment) {
+		super();
+		this.address = address;
+		this.content = content;
+		this.image = image;
+		this.addtionalfee = addtionalfee;
+		this.name = name;
+		this.viewer = viewer;
+		this.status = status;
+		this.createdAt = createdAt;
+		this.registedAt = registedAt;
+		this.account = account;
+		this.servicefee = servicefee;
+		this.ward = ward;
+		this.servicesettings = servicesettings;
+		this.feedback = feedback;
+		this.sportFields = sportFields;
+		this.servicePayment = servicePayment;
+	}
+
+
 	
+		
 	
 	
 }

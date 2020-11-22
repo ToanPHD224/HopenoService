@@ -119,6 +119,12 @@ public class Payment implements Serializable {
 		this.account = account;
 		this.sportfield = sportfield;
 	}
+	@Override
+	public String toString() {
+		return "Payment [id=" + id + ", amount=" + amount + ", create_date=" + create_date + ", status=" + status
+				+ ", _start=" + _start + ", _end=" + _end + ", date=" + date + ", account=" + account + ", sportfield="
+				+ sportfield + "]";
+	}
 	
 	
 }

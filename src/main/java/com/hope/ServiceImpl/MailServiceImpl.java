@@ -36,5 +36,24 @@ public class MailServiceImpl implements MailService  {
 		}
 		return true;
 	}
+	public void sendMailAcept(Account ac,ConfirmationToken c,String content)
+	{
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setTo(ac.getMail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setFrom("zockkidpro@gmail.com");
+        mailMessage.setText(content);
+        sendConfirm(mailMessage);
+	}
+	public void sendMailDecline(Account ac,ConfirmationToken c,String content)
+	{
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setTo(ac.getMail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setFrom("zockkidpro@gmail.com");
+        mailMessage.setText(content);
+        sendConfirm(mailMessage);
+	}
+	
 
 }

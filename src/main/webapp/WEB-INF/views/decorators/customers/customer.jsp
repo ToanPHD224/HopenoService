@@ -1,4 +1,5 @@
 <%@include file="/WEB-INF/views/common/jstl.jsp" %>
+ <c:url value="/resources/admin" var="cssroot" />
 <!DOCTYPE html>
 <html lang="en">
 <head>

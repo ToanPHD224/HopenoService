@@ -26,6 +26,13 @@ public class Districs implements Serializable {
 	private String name;
 	@OneToMany(mappedBy = "districs",cascade = CascadeType.ALL)
 	private Set<Ward> ward;
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

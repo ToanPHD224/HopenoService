@@ -28,14 +28,14 @@ public class Account implements Serializable {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "address",columnDefinition = "nvarchar")
+	@Column(name = "address")
 	private String address;
 	@Column(name = "created_at")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date created_at;
-	@Column(name = "mail",columnDefinition = "nvarchar")
+	@Column(name = "mail")
 	private String mail;
-	@Column(name = "name",columnDefinition = "nvarchar")
+	@Column(name = "name")
 	private String name;
 	@Column(name = "password")
 	private String password;
@@ -50,6 +50,18 @@ public class Account implements Serializable {
 	private Set<Payment> payment;
 	@OneToMany(mappedBy = "account",cascade = CascadeType.ALL)
 	private Set<FeedBack> feedback;
+	@Column(name = "isband")
+	private boolean isBand;
+	
+	public boolean isBand() {
+		return isBand;
+	}
+	public void setBand(boolean isBand) {
+		this.isBand = isBand;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public long getId() {
 		return id;
 	}
@@ -146,6 +158,21 @@ public class Account implements Serializable {
 		this.service = service;
 		this.payment = payment;
 		this.feedback = feedback;
+	}
+	public Account(String address, Date created_at, String mail, String name, String password, boolean status,
+			Role role, Set<Service> service, Set<Payment> payment, Set<FeedBack> feedback, boolean isBand) {
+		super();
+		this.address = address;
+		this.created_at = created_at;
+		this.mail = mail;
+		this.name = name;
+		this.password = password;
+		this.status = status;
+		this.role = role;
+		this.service = service;
+		this.payment = payment;
+		this.feedback = feedback;
+		this.isBand = isBand;
 	}
 	
 	

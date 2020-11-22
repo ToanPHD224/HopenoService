@@ -33,6 +33,24 @@ public class SportField implements Serializable {
 	private Service service;
 	@OneToMany(mappedBy = "sportfield",cascade = CascadeType.ALL)
 	private Set<Payment> payment;
+	@Column(name = "status")
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	public SportField(long id, String name, int type, Service service, Set<Payment> payment, boolean status) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.service = service;
+		this.payment = payment;
+		this.status = status;
+	}
 	public long getId() {
 		return id;
 	}

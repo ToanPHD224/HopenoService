@@ -17,7 +17,7 @@ public class FeedBack implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "content",columnDefinition = "nvarchar")
+	@Column(name = "content")
 	private String content;
 	@Column(name = "rating")
 	private float rating;

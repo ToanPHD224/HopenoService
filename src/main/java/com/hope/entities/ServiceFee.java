@@ -20,10 +20,19 @@ public class ServiceFee implements Serializable {
 	private long id;
 	@Column(name = "booking_fee")
 	private float booking_Fee;
-	@Column(name = "name",columnDefinition = "nvarchar")
+	@Column(name = "name")
 	private String name;
 	@OneToMany(mappedBy = "servicefee",cascade = CascadeType.ALL)
 	private Set<Service> service;
+	@Column(name = "status")
+	private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	public long getId() {
 		return id;
 	}
@@ -62,5 +71,13 @@ public class ServiceFee implements Serializable {
 		this.name = name;
 		this.service = service;
 	}
+	public ServiceFee(float booking_Fee, String name, Set<Service> service, boolean status) {
+		super();
+		this.booking_Fee = booking_Fee;
+		this.name = name;
+		this.service = service;
+		this.status = status;
+	}
+	
 
 }
