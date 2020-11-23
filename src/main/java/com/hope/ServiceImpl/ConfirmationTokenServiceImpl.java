@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import com.hope.Repository.CofirmationTokenRepo;
 import com.hope.Service.AccountService;
 import com.hope.Service.ConfirmationTokenService;
+import com.hope.Service.RoleService;
 import com.hope.entities.Account;
 import com.hope.entities.ConfirmationToken;
 @Service
@@ -54,6 +55,8 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
 	}
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private RoleService r;
 	@Override
 	public boolean confirmToken(String token) {
 		ConfirmationToken c = getConfirmationTokenByToken(token);
@@ -64,6 +67,7 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
 			if (ac.isStatus() == true) {
 				return false;
 			}
+			ac.setRole(r.getById(3));
 			ac.setStatus(true);
 			accountService.update(ac);
 			return true;

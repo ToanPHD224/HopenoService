@@ -9,8 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 @Entity
 @Table(name = "role")
+@Getter
+@Setter
+@AllArgsConstructor
 public class Role implements Serializable {
 	/**
 	 * 
@@ -23,34 +31,7 @@ public class Role implements Serializable {
 	private String name;
 	@OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
 	private Set<Account> account;
-	public long getId() {
-		return id;
+	public Role() {
+		// TODO Auto-generated constructor stub
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Set<Account> getAccount() {
-		return account;
-	}
-	public void setAccount(Set<Account> account) {
-		this.account = account;
-	}
-	public Role(String name) {
-		super();
-		this.name = name;
-	}
-	public Role( String name, Set<Account> account) {
-		super();
-		this.name = name;
-		this.account = account;
-	}
-	public Role() {}
-	
-
 }

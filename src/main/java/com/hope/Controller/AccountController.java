@@ -15,18 +15,19 @@ import com.hope.entities.Account;
 
 @Controller
 public class AccountController {
-	@GetMapping("/register")
+	@GetMapping("admin/register")
 	public String abc(ModelMap md)
 	{
 		Account ac = accountService.createAccount();
-		System.out.println(ac.getRole());
+		System.out.println(ac.getRole().getName());
+		System.out.println(ac.getCreated_at());
 		md.addAttribute("account",ac);
-		return "register";
+		return "admin/register";
 	}
 	
 	@Autowired
 	private AccountService accountService;
-	@PostMapping("/register")
+	@PostMapping("admin/register")
 	@ResponseBody
 	public String regiser(ModelMap md, @ModelAttribute(name = "account") Account ac) {
 		boolean rq = accountService.registerAccount(ac);

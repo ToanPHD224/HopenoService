@@ -1,5 +1,6 @@
 package com.hope.ServiceImpl;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -63,8 +64,7 @@ public class AccountServiceImpl implements AccountService {
 		return accountRepo.getAccountByMail(mail);
 	}
 
-	@Autowired
-	private AccountService accountService;
+
 	@Autowired
 	private RoleService roleService;
 	@Autowired
@@ -75,12 +75,12 @@ public class AccountServiceImpl implements AccountService {
 	private DateHelperService dateHelper;
 	@Override
 	public boolean registerAccount( Account ac) {
-		Account newAc = accountService.getAccountByMail(ac.getMail());
+		Account newAc = getAccountByMail(ac.getMail());
 		if (newAc != null) {
 			return false;
 		} else {
 			try {
-				accountService.save(ac);
+				save(ac);
 				ConfirmationToken c = new ConfirmationToken(ac);
 				confirmationToken.save(c);
 				mailService.mailContent(ac, c);
@@ -98,6 +98,7 @@ public class AccountServiceImpl implements AccountService {
 		Account ac = new Account();
 		ac.setRole(roleService.getById(3));
 		ac.setStatus(false);
+		 LocalDateTime lt  = LocalDateTime.now(); 
 		ac.setCreated_at(new Date());
 		return ac;
 	}

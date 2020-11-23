@@ -58,6 +58,7 @@ public class HomeController {
 	private ServiceService serviceService;
 	@Autowired DateHelperService dateHelp;
 	@GetMapping("/getservice")
+	@ResponseBody
 	public String getService( @RequestParam("quan") String quan, @RequestParam("start")float start , @RequestParam("end") float end , @RequestParam("date") String date ,ModelMap md) throws ParseException
 	{
 		md.addAttribute("date",date);
@@ -68,12 +69,12 @@ public class HomeController {
 		if(list.size()>0)
 		{
 			md.addAttribute("listService",list);
-			return "viewservice";
+			return "viewservice" + list.get(0).getName();
 		}
 		else
 		{
 			md.addAttribute("name", "Khong co san nao");
-			return "viewservice";
+			return "viewservice" + " Khong co san nao";
 		}
 		
 	}

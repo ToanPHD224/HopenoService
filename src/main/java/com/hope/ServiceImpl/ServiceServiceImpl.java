@@ -103,7 +103,13 @@ public class ServiceServiceImpl implements ServiceService {
 	@Override
 	public Page<Service> findAllByRegistedAt(org.springframework.data.domain.Pageable page, Date date) {
 		// TODO Auto-generated method stub
-		return servicerepo.findAllByRegistedAt(page, date);
+		return servicerepo.findAllByregisteredAt(page, date);
+	}
+
+	@Override
+	public List<Service> findAllByStatus(boolean status) {
+		// TODO Auto-generated method stub
+		return servicerepo.findAllByStatus(status);
 	}
 
 }

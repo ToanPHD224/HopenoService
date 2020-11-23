@@ -14,8 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
-@Table(name = "sportfiled")
+@Table(name = "sport_filed")
+@Data
 public class SportField implements Serializable {
 	/**
 	 * 
@@ -24,7 +27,7 @@ public class SportField implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar(250)",length = 250)
 	private String name;
 	@Column(name = "type")
 	private int type;
@@ -35,67 +38,4 @@ public class SportField implements Serializable {
 	private Set<Payment> payment;
 	@Column(name = "status")
 	private boolean status;
-	
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	public SportField(long id, String name, int type, Service service, Set<Payment> payment, boolean status) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.service = service;
-		this.payment = payment;
-		this.status = status;
-	}
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getType() {
-		return type;
-	}
-	public void setType(int type) {
-		this.type = type;
-	}
-	public Service getService() {
-		return service;
-	}
-	public void setService(Service service) {
-		this.service = service;
-	}
-	public Set<Payment> getPayment() {
-		return payment;
-	}
-	public void setPayment(Set<Payment> payment) {
-		this.payment = payment;
-	}
-	public SportField(long id, String name, int type, Service service, Set<Payment> payment) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.service = service;
-		this.payment = payment;
-	}
-	public SportField(String name, int type, Service service, Set<Payment> payment) {
-		super();
-		this.name = name;
-		this.type = type;
-		this.service = service;
-		this.payment = payment;
-	} 
-	public SportField() {}
-
 }

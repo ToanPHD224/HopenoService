@@ -5,12 +5,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.query.JpaCountQueryCreator;
 import org.springframework.stereotype.Service;
 import com.hope.Repository.ServicePaymentRepo;
 import com.hope.Service.DateHelperService;
 import com.hope.Service.PaymentService;
 import com.hope.Service.ServicePaymentService;
 import com.hope.Service.ServiceService;
+import com.hope.entities.Account;
 import com.hope.entities.Payment;
 import com.hope.entities.ServicePayment;
 
@@ -69,7 +71,7 @@ public class ServicePaymentServiceImpl implements ServicePaymentService {
 		}
 
 		try {
-			List<com.hope.entities.Service> listService = service.findAll();
+			List<com.hope.entities.Service> listService = service.findAllByStatus(true);
 
 			for (int i = 0; i < listService.size(); i++) {
 				int totalBook = 0;
@@ -91,7 +93,7 @@ public class ServicePaymentServiceImpl implements ServicePaymentService {
 				ServicePayment s = new ServicePayment(totalBook, listService.get(i),
 						listService.get(i).getServicefee().getName(), totalPay, totalFee, month, false);
 				servicepayment.save(s);
-
+	
 			}
 			return true;
 		} catch (Exception e) {

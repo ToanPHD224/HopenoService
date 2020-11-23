@@ -11,9 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import lombok.Data;
 
 @Entity
 @Table(name = "districs")
+@Data
 public class Districs implements Serializable {
 	/**
 	 * 
@@ -22,42 +26,9 @@ public class Districs implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "name",columnDefinition = "nvarchar")
+	@Column(name = "name",columnDefinition = "nvarchar(250)",length = 250)
 	private String name;
 	@OneToMany(mappedBy = "districs",cascade = CascadeType.ALL)
-	private Set<Ward> ward;
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Set<Ward> getWard() {
-		return ward;
-	}
-	public void setWard(Set<Ward> ward) {
-		this.ward = ward;
-	}
-	public Districs() {}
-	public Districs(String name, Set<Ward> ward) {
-		super();
-		this.name = name;
-		this.ward = ward;
-	}
-	public Districs(long id, String name, Set<Ward> ward) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.ward = ward;
-	}
-	
-	
+	private Set<Ward> ward;	
 	
 }

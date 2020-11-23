@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.hope.entities.ServiceSettings;
 @Repository
 public interface ServiceSettingRepo extends JpaRepository<ServiceSettings, Long>  {
-	@Query(value = "Select sum(servicesettings.amount) from servicesettings where servicesettings.time  >= :start and servicesettings.time < :end",nativeQuery = true)
+	@Query(value = "Select sum(service_settings.amount) from service_settings where service_settings.time  >= :start and service_settings.time < :end",nativeQuery = true)
 	public float getAmountByTime(@Param("start")float start, @Param("end") float end);
 }

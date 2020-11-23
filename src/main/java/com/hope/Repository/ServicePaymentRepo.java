@@ -10,7 +10,7 @@ import com.hope.entities.ServicePayment;
 
 public interface ServicePaymentRepo extends JpaRepository<ServicePayment, Long>  {
 	
-	@Query(value = "select * from servicepayment where month =:month",nativeQuery = true)
+	@Query(value = "select * from service_payment where month =:month",nativeQuery = true)
 	public List<ServicePayment> isVailPayment(@Param("month") int month);
 
 }

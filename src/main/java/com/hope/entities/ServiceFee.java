@@ -12,72 +12,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "service_fee")
+@Data
 public class ServiceFee implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name = "booking_fee")
 	private float booking_Fee;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar(250)" ,length = 250)
 	private String name;
 	@OneToMany(mappedBy = "servicefee",cascade = CascadeType.ALL)
 	private Set<Service> service;
 	@Column(name = "status")
 	private boolean status;
-	
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public float getBooking_Fee() {
-		return booking_Fee;
-	}
-	public void setBooking_Fee(float booking_Fee) {
-		this.booking_Fee = booking_Fee;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Set<Service> getService() {
-		return service;
-	}
-	public void setService(Set<Service> service) {
-		this.service = service;
-	}
-	public ServiceFee(float booking_Fee, String name, Set<Service> service) {
-		super();
-		this.booking_Fee = booking_Fee;
-		this.name = name;
-		this.service = service;
-	}
-	public ServiceFee() {}
-	public ServiceFee(long id, float booking_Fee, String name, Set<Service> service) {
-		super();
-		this.id = id;
-		this.booking_Fee = booking_Fee;
-		this.name = name;
-		this.service = service;
-	}
-	public ServiceFee(float booking_Fee, String name, Set<Service> service, boolean status) {
-		super();
-		this.booking_Fee = booking_Fee;
-		this.name = name;
-		this.service = service;
-		this.status = status;
-	}
-	
 
 }

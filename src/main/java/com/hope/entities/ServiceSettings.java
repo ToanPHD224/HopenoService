@@ -11,8 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
-@Table(name = "servicesettings")
+@Table(name = "service_settings")
+@Data
 public class ServiceSettings implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,43 +27,4 @@ public class ServiceSettings implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "service_id")
 	private Service service;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public float getTime() {
-		return time;
-	}
-	public void setTime(float time) {
-		this.time = time;
-	}
-	public float getAmount() {
-		return amount;
-	}
-	public void setAmount(float amount) {
-		this.amount = amount;
-	}
-	public Service getService() {
-		return service;
-	}
-	public void setService(Service service) {
-		this.service = service;
-	}
-	public ServiceSettings(long id, float time, float amount, Service service) {
-		super();
-		this.id = id;
-		this.time = time;
-		this.amount = amount;
-		this.service = service;
-	}
-	public ServiceSettings(float time, float amount, Service service) {
-		super();
-		this.time = time;
-		this.amount = amount;
-		this.service = service;
-	}
-	
-	public ServiceSettings() {}
 }

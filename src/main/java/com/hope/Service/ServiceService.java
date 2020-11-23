@@ -16,4 +16,5 @@ public interface ServiceService extends CrudEnties<Service>  {
 	public List<Service> getAllRegistationServive(Date date);
 	public Page<Service> findAll(int page);
 	public Page<Service> findAllByRegistedAt(Pageable page,Date date);
+	public List<Service> findAllByStatus(boolean status);
 }

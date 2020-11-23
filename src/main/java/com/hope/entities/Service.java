@@ -15,23 +15,30 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.core.sym.Name;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Entity
 @Table(name = "service")
+@Data
+@AllArgsConstructor
 public class Service implements Serializable {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private long id;
-	@Column(name = "address")
+	@Column(name = "address",columnDefinition = "nvarchar(250)",length = 250)
 	private String address;
-	@Column(name = "content")
+	@Column(name = "content",columnDefinition = "nvarchar(250)",length = 250)
 	private String content;
 	@Column(name = "image")
 	private String image;
-	@Column(name = "additionalfee")
+	@Column(name = "additional_fee")
 	private float addtionalfee;
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "nvarchar(250)",length = 250)
 	private String name;
 	@Column(name = "email")
 	private String mail;
@@ -39,15 +46,17 @@ public class Service implements Serializable {
 	private float viewer;
 	@Column(name = "status")
 	private boolean status;
-	@Column(name = "createdat")
+	@Column(name = "created_at")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-	@Column(name = "registedat")
-	private Date registedAt;
+	@Column(name = "registed_at")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date registeredAt;
 	@ManyToOne
 	@JoinColumn(name = "account_id")
 	private Account account;
 	@ManyToOne
-	@JoinColumn(name = "servicefee_id")
+	@JoinColumn(name = "service_fee_id")
 	private ServiceFee servicefee;
 	@ManyToOne
 	@JoinColumn(name = "ward_id")
@@ -60,222 +69,5 @@ public class Service implements Serializable {
 	private Set<SportField> sportFields;
 	@OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
 	private Set<ServicePayment> servicePayment;
-	
-	
-	public float getViewer() {
-		return viewer;
-	}
-
-	public void setViewer(float viewer) {
-		this.viewer = viewer;
-	}
-
-	public Set<ServicePayment> getServicePayment() {
-		return servicePayment;
-	}
-
-	public void setServicePayment(Set<ServicePayment> servicePayment) {
-		this.servicePayment = servicePayment;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getRegistedAt() {
-		return registedAt;
-	}
-
-	public void setRegistedAt(Date registedAt) {
-		this.registedAt = registedAt;
-	}
-
-	public long getId() {
-		return id;
-	}
-		
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public float getAddtionalfee() {
-		return addtionalfee;
-	}
-	
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public void setAddtionalfee(float addtionalfee) {
-		this.addtionalfee = addtionalfee;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public ServiceFee getServicefee() {
-		return servicefee;
-	}
-
-	public void setServicefee(ServiceFee servicefee) {
-		this.servicefee = servicefee;
-	}
-
-	public Ward getWard() {
-		return ward;
-	}
-
-	public void setWard(Ward ward) {
-		this.ward = ward;
-	}
-
-	public Set<ServiceSettings> getServicesettings() {
-		return servicesettings;
-	}
-
-	public void setServicesettings(Set<ServiceSettings> servicesettings) {
-		this.servicesettings = servicesettings;
-	}
-
-	public Set<FeedBack> getFeedback() {
-		return feedback;
-	}
-
-	public void setFeedback(Set<FeedBack> feedback) {
-		this.feedback = feedback;
-	}
-
-	public Set<SportField> getSportFields() {
-		return sportFields;
-	}
-
-	public void setSportFields(Set<SportField> sportFields) {
-		this.sportFields = sportFields;
-	}
-
 	public Service() {}
-
-	public Service(long id, String address, String content, String image, float addtionalfee, String name,
-			boolean status, Account account, ServiceFee servicefee, Ward ward, Set<ServiceSettings> servicesettings,
-			Set<FeedBack> feedback, Set<SportField> sportFields) {
-		super();
-		this.id = id;
-		this.address = address;
-		this.content = content;
-		this.image = image;
-		this.addtionalfee = addtionalfee;
-		this.name = name;
-		this.status = status;
-		this.account = account;
-		this.servicefee = servicefee;
-		this.ward = ward;
-		this.servicesettings = servicesettings;
-		this.feedback = feedback;
-		this.sportFields = sportFields;
-	}
-
-	public Service(String address, String content, String image, float addtionalfee, String name, boolean status,
-			Date createdAt, Date registedAt, Account account, ServiceFee servicefee, Ward ward,
-			Set<ServiceSettings> servicesettings, Set<FeedBack> feedback, Set<SportField> sportFields,
-			Set<ServicePayment> servicePayment) {
-		super();
-		this.address = address;
-		this.content = content;
-		this.image = image;
-		this.addtionalfee = addtionalfee;
-		this.name = name;
-		this.status = status;
-		this.createdAt = createdAt;
-		this.registedAt = registedAt;
-		this.account = account;
-		this.servicefee = servicefee;
-		this.ward = ward;
-		this.servicesettings = servicesettings;
-		this.feedback = feedback;
-		this.sportFields = sportFields;
-		this.servicePayment = servicePayment;
-	}
-
-	public Service(String address, String content, String image, float addtionalfee, String name, float viewer,
-			boolean status, Date createdAt, Date registedAt, Account account, ServiceFee servicefee, Ward ward,
-			Set<ServiceSettings> servicesettings, Set<FeedBack> feedback, Set<SportField> sportFields,
-			Set<ServicePayment> servicePayment) {
-		super();
-		this.address = address;
-		this.content = content;
-		this.image = image;
-		this.addtionalfee = addtionalfee;
-		this.name = name;
-		this.viewer = viewer;
-		this.status = status;
-		this.createdAt = createdAt;
-		this.registedAt = registedAt;
-		this.account = account;
-		this.servicefee = servicefee;
-		this.ward = ward;
-		this.servicesettings = servicesettings;
-		this.feedback = feedback;
-		this.sportFields = sportFields;
-		this.servicePayment = servicePayment;
-	}
-
-
-	
-		
-	
-	
 }
