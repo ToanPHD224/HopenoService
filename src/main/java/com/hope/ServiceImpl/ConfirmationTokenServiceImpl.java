@@ -67,7 +67,6 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
 			if (ac.isStatus() == true) {
 				return false;
 			}
-			ac.setRole(r.getById(3));
 			ac.setStatus(true);
 			accountService.update(ac);
 			return true;

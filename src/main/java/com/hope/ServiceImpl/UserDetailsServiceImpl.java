@@ -22,17 +22,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Account ac = acsv.getAccountByMail(username);
-		System.out.println(ac.getMail());
-		System.out.println(ac.getRole().getName());
-		System.out.println(ac.getPassword());
 		if(ac==null)
 		{
 			throw new UsernameNotFoundException("Not found");
 		}
 		 Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 		 grantedAuthorities.add(new SimpleGrantedAuthority(ac.getRole().getName()));
-		 System.out.println(grantedAuthorities.toString());
-		 System.out.println("aaaaaaaa");
 		return new User(ac.getMail(),ac.getPassword(),grantedAuthorities);
 	}
 }

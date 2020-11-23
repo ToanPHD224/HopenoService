@@ -49,7 +49,7 @@ public class Service implements Serializable {
 	@Column(name = "created_at")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-	@Column(name = "registed_at")
+	@Column(name = "registered_at")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date registeredAt;
 	@ManyToOne

@@ -10,4 +10,6 @@ import com.hope.entities.Account;
 public interface AccountRepo extends JpaRepository<Account, Long> {
 	@Query(value ="Select * from account  where mail =:mail and status = 1"  ,  nativeQuery = true)
 	public Account getAccountByMail(@Param("mail") String mail);	
+	@Query(value ="Select * from account  where mail =:mail and status = 0"  ,  nativeQuery = true)
+	public Account getAccount(@Param("mail") String mail);
 }

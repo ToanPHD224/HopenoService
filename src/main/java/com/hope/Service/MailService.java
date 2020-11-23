@@ -6,6 +6,6 @@ import com.hope.entities.Account;
 import com.hope.entities.ConfirmationToken;
 
 public interface MailService {
-	public void mailContent(Account ac,ConfirmationToken c);
+	public void mailContent(Account ac,ConfirmationToken c,String content);
 	public boolean sendConfirm(SimpleMailMessage mail);
 }

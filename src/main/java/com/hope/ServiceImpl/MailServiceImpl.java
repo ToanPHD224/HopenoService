@@ -14,14 +14,13 @@ public class MailServiceImpl implements MailService  {
 	@Autowired
 	private JavaMailSender mail;
 	@Override
-	public void mailContent(Account ac,ConfirmationToken c)
+	public void mailContent(Account ac,ConfirmationToken c,String content)
 	{
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setTo(ac.getMail());
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setFrom("zockkidpro@gmail.com");
-        mailMessage.setText("To confirm your account, please click here : "
-        +"http://localhost:8090/confirm-account/"+c.getConfirmation_token());
+        mailMessage.setText(content);
         sendConfirm(mailMessage);
 	}
 	

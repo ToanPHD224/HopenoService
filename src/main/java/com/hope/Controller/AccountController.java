@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hope.Service.AccountService;
 import com.hope.Service.ConfirmationTokenService;
+import com.hope.Service.RoleService;
 import com.hope.entities.Account;
 
 @Controller
@@ -27,9 +28,12 @@ public class AccountController {
 	
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private RoleService role;
 	@PostMapping("admin/register")
 	@ResponseBody
 	public String regiser(ModelMap md, @ModelAttribute(name = "account") Account ac) {
+		ac.setRole(role.getById(3));
 		boolean rq = accountService.registerAccount(ac);
 		if(rq == true) {
 		md.addAttribute("message","Gui thanh cong");	

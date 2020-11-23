@@ -1,5 +1,7 @@
 package com.hope.Security;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -27,12 +32,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	    protected void configure(HttpSecurity http) throws Exception {
+			http.cors().and().csrf().disable();
 	        http
 	            .authorizeRequests()
 	                .antMatchers("/**").permitAll()
 	                .antMatchers("/confirm-account/**").permitAll()
 	                .antMatchers("/resources/**").permitAll()
-	                .antMatchers("/admin/**").hasRole("Customer")
 	                .anyRequest().authenticated()
 	                .and()
 		            // Cho phép người dùng xác thực bằng form login
@@ -49,5 +54,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                .and()
 	            .exceptionHandling()
 	                .accessDeniedPage("/403");
+	    }
+	
+
+	    @Bean
+	    CorsConfigurationSource corsConfigurationSource() {
+	        CorsConfiguration configuration = new CorsConfiguration();
+	        configuration.setAllowedOrigins(Arrays.asList("*"));
+	        configuration.setAllowedMethods(Arrays.asList("*"));
+	        configuration.setAllowedHeaders(Arrays.asList("*"));
+	        configuration.setAllowCredentials(true);
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        source.registerCorsConfiguration("/**", configuration);
+	        return source;
 	    }
 }
