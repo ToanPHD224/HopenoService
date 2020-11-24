@@ -84,7 +84,7 @@
 											<div class="row">
 											<input type="hidden" value="${x.id}" name="id">
 												<div class="col-sm-7">
-													<img class="rounded" src="${cssroot}/image/${x.image}" width="100%"
+													<img class="rounded" src="${cssroot}/image/admin/${x.image}" width="100%"
 														height="100%" alt="">
 												</div>
 												<div class="col-sm-5">

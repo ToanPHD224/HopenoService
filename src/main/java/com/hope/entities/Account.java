@@ -61,5 +61,7 @@ public class Account implements Serializable {
 	private Set<FeedBack> feedback;
 	@Column(name = "banned")
 	private boolean banned;
+	@Column(name = "image")
+	private String image;
 	public Account() {}
 }

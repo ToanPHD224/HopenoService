@@ -14,7 +14,7 @@ public class UploadFileServiceImpl implements UpLoadFileService {
 	
 	
 	@Override
-	public int upFile(String dir, MultipartFile file,HttpServletRequest request) {
+	public int upFile(String dir, MultipartFile file) {
 		File file1 = new File(this.getFolderUpload(dir), file.getOriginalFilename());
 		if(file.getSize() >= 52428800)
 		{
@@ -43,7 +43,7 @@ public class UploadFileServiceImpl implements UpLoadFileService {
 		return 1;
 	}
 	public File getFolderUpload(String dir) {
-	    File folderUpload = new File("C:\\Users\\84911\\Desktop\\DoAnTotNghiep\\HopenoService\\src\\main\\webapp\\resources\\image\\dir\\");
+	    File folderUpload = new File("C:\\Users\\84911\\Desktop\\DoAnTotNghiep\\HopenoService\\src\\main\\webapp\\resources\\image\\"+dir);
 	    if (!folderUpload.exists()) {
 	      folderUpload.mkdirs();
 	    }
