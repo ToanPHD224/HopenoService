@@ -2,6 +2,8 @@ package com.hope.ServiceImpl;
 
 import java.awt.print.Pageable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +16,14 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
 import com.hope.Repository.ServiceRepo;
+import com.hope.Service.AccountService;
+import com.hope.Service.ConfirmationTokenService;
 import com.hope.Service.DateHelperService;
+import com.hope.Service.MailService;
+import com.hope.Service.RoleService;
 import com.hope.Service.ServiceService;
+import com.hope.entities.Account;
+import com.hope.entities.ConfirmationToken;
 import com.hope.entities.Service;
 
 @org.springframework.stereotype.Service
@@ -101,9 +109,9 @@ public class ServiceServiceImpl implements ServiceService {
 	}
 
 	@Override
-	public Page<Service> findAllByRegistedAt(org.springframework.data.domain.Pageable page, Date date) {
+	public Page<Service> findAllByRegistedAtAndStatus(org.springframework.data.domain.Pageable page, Date date,boolean status) {
 		// TODO Auto-generated method stub
-		return servicerepo.findAllByregisteredAt(page, date);
+		return servicerepo.findAllByRegisteredAtAndStatus(page, date,status);
 	}
 
 	@Override
@@ -111,5 +119,99 @@ public class ServiceServiceImpl implements ServiceService {
 		// TODO Auto-generated method stub
 		return servicerepo.findAllByStatus(status);
 	}
+	@Autowired
+	private AccountService ac;
+	@Autowired
+	private RoleService roleService;
+	@Autowired
+	private ConfirmationTokenService cm;
+	@Autowired
+	private DateHelperService date;
+	@Autowired
+	private MailService mail;
+	@Override
+	public int registationService(String mail, long id) {
+		
+	
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		if (ac.getAccountByMail(mail) != null) {
+			try {
+				Account acount = ac.getAccountByMail(mail);
+				acount.setRole(roleService.getById(2));
+				Service s = getById(id);
+				s.setStatus(true);
+				s.setAccount(acount);
+				s.setCreatedAt(date.convetDatetoSql(dtf.format(now)));
+				s.setViewer(0);
+				update(s);
+				return 1;
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				return -1;
+			}
 
+		} else {
+
+			try {
+				Account acount = new Account();
+				acount.setRole(roleService.getById(2));
+				acount.setMail(mail);
+				acount.setPassword(ac.genPassWord(8));
+				acount.setStatus(false);
+				acount.setCreated_at(date.convetDatetoSql(dtf.format(now)));
+				ac.save(acount);
+				ConfirmationToken tk = new ConfirmationToken(acount);
+				cm.save(tk);
+				this.mail.mailContent(acount,
+								"Your Registation is complete : \n"  
+								+ " This is your mail: " + acount.getMail() +" : \n"
+								+ " This is your password: " + acount.getPassword()+" : \n"
+								+ " Please Click That Link To Active Your Account" +" : \n"
+								+ " http://localhost:8090/confirm-account/"+ tk.getConfirmation_token());
+
+				Service s = getById(id);
+				s.setStatus(true);
+				s.setCreatedAt(date.convetDatetoSql(dtf.format(now)));
+				s.setAccount(ac.getAccount(mail));
+				s.setViewer(0);
+				update(s);
+				return 1;
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				return -1;
+			}
+
+		
+	}
+		
+	}
+	@Override
+	public int declineService(long id,String mail) {
+		// TODO Auto-generated method stub
+		Service s = getById(id);
+		try {
+			delete(s);
+			Account ac = new Account();
+			ac.setMail(mail);
+			this.mail.mailContent(ac, "Registation falied ! \n"
+					+ "Please Check Your Service Information And Re-register ! \n"
+					+ "Contact with Us: \n"
+					+ "http://localhost:8090/contact");
+			return 1;
+		} catch (Exception e) {
+			return -1;	// TODO: handle exception
+		}
+		
+	}
+
+	@Override
+	public List<Service> findAllByMail(String mail,boolean status) {
+		// TODO Auto-generated method stub
+		return servicerepo.findAllByMailAndStatus(mail, status);
+	}
 }
+
+

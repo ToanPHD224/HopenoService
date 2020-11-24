@@ -12,11 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "service_fee")
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 public class ServiceFee implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +34,9 @@ public class ServiceFee implements Serializable {
 	private Set<Service> service;
 	@Column(name = "status")
 	private boolean status;
-
+	@Column(name = "image")
+	private String image;
+	public ServiceFee() {
+		// TODO Auto-generated constructor stub
+	}
 }

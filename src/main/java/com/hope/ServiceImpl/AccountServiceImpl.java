@@ -3,9 +3,12 @@ package com.hope.ServiceImpl;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.hibernate.type.descriptor.java.DataHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -83,7 +86,7 @@ public class AccountServiceImpl implements AccountService {
 				save(ac);
 				ConfirmationToken c = new ConfirmationToken(ac);
 				confirmationToken.save(c);
-				mailService.mailContent(ac, c);
+				mailService.mailContent(ac,"To Cofirm you account please click that link "+c.getConfirmation_token());
 				return true;
 			} catch (Exception e) {
 				return false;
@@ -103,4 +106,45 @@ public class AccountServiceImpl implements AccountService {
 		return ac;
 	}
 
-}
+	@Override
+	public String genPassWord(int lenght) {
+		 String capitalCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	      String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+	      String specialCharacters = "!@#$";
+	      String numbers = "1234567890";
+	      String combinedChars = capitalCaseLetters + lowerCaseLetters + specialCharacters + numbers;
+	      Random random = new Random();
+	      char[] password = new char[lenght];
+
+	      password[0] = lowerCaseLetters.charAt(random.nextInt(lowerCaseLetters.length()));
+	      password[1] = capitalCaseLetters.charAt(random.nextInt(capitalCaseLetters.length()));
+	      password[2] = specialCharacters.charAt(random.nextInt(specialCharacters.length()));
+	      password[3] = numbers.charAt(random.nextInt(numbers.length()));
+	   
+	      for(int i = 4; i< lenght ; i++) {
+	         password[i] = combinedChars.charAt(random.nextInt(combinedChars.length()));
+	      }
+	      String s = new String(password);
+	      return s;
+	   }
+
+	@Override
+	public Account getAccount(String mail) {
+		// TODO Auto-generated method stub
+		return accountRepo.getAccount(mail);
+	}
+
+	@Override
+	public Page<Account> findAll(Pageable page) {
+		// TODO Auto-generated method stub
+		return accountRepo.findAll(page);
+	}
+
+	@Override
+	public Page<Account> findAllByMail(Pageable page, String mail) {
+		// TODO Auto-generated method stub
+		return accountRepo.findAllByMail(page, mail);
+	}
+	}
+
+

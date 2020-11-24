@@ -32,6 +32,7 @@ public interface ServiceRepo extends JpaRepository<Service, Long> , PagingAndSor
 	@Query(value = "select * from service where service.status = 0 and service.registedat = :date",nativeQuery = true)
 	public List<Service> getAllRegistationServive(@Param("date") Date date);
 	
-	public Page<Service> findAllByregisteredAt(Pageable page,Date date);
+	public Page<Service> findAllByRegisteredAtAndStatus(Pageable page,Date date,boolean status);
 	public List<Service> findAllByStatus(boolean status);
+	public List<Service> findAllByMailAndStatus(String mail,boolean status);
 }

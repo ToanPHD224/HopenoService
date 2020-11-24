@@ -1,7 +1,6 @@
 <%@ include file="/WEB-INF/views/common/jstl.jsp" %>
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="f"%>
 <c:url value="/resources" var="cssroot" />
-<div class="content-wrapper">
-    <div class="container">
         <div class="row">
             <div class="col-sm-12 ">
                 <div class="row d-flex justify-content-center">
@@ -16,23 +15,22 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form">
+                                <f:form action="/admin/updatetypeservice" modelAttribute="serviceFee" method="POST" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nameoftype">Name of Type</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter  Name">
+                                            <f:input path="name" class="form-control" placeholder="Enter  Name"/>
+                                             <f:hidden path="id"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Booking Fee (%)</label>
-                                            <input type="number" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Enter Book Fee">
+                                            <f:input path="booking_Fee" class="form-control" placeholder="Enter Book Fee"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                                                    <input type="file" class="custom-file-input" name="file" >
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
                                                         file</label>
                                                 </div>
@@ -45,12 +43,12 @@
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                        <button type="submit" style="border: 1px solid black;" class="btn"> <i
+                                        <button type="submit" name="action" value="save" style="border: 1px solid black;" class="btn"> <i
                                                 class="fas fa-plus"></i>&nbspSave</button>
-                                        <button type="submit" style="border: 1px solid black;" class="btn"><i
+                                        <button type="submit" name="action" value="cancel" style="border: 1px solid black;" class="btn"><i
                                                 class="far fa-window-close"></i>&nbspCancel</button>
                                     </div>
-                                </form>
+                                </f:form>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -60,7 +58,3 @@
                 </div>
             </div>
         </div>
-
-    </div>
-
-</div>
