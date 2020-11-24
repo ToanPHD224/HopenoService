@@ -3,6 +3,8 @@ package com.hope.ServiceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.hope.Repository.ServiceFeeRepo;
@@ -10,7 +12,7 @@ import com.hope.Service.ServiceFeeService;
 import com.hope.entities.ServiceFee;
 
 @Service
-public class ServiceFeeServiceImpl implements ServiceFeeService {
+public  class ServiceFeeServiceImpl implements ServiceFeeService {
 	@Autowired
 	private ServiceFeeRepo servicefeerepo;
 
@@ -42,6 +44,12 @@ public class ServiceFeeServiceImpl implements ServiceFeeService {
 	public void delete(ServiceFee entites) {
 		// TODO Auto-generated method stub
 		servicefeerepo.delete(entites);
+	}
+
+	@Override
+	public Page<ServiceFee> getAllService(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return servicefeerepo.findAll(pageable);
 	}
 	
 

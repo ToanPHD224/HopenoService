@@ -164,7 +164,7 @@ public class ServiceServiceImpl implements ServiceService {
 				ac.save(acount);
 				ConfirmationToken tk = new ConfirmationToken(acount);
 				cm.save(tk);
-				this.mail.mailContent(acount, tk,
+				this.mail.mailContent(acount,
 								"Your Registation is complete : \n"  
 								+ " This is your mail: " + acount.getMail() +" : \n"
 								+ " This is your password: " + acount.getPassword()+" : \n"
@@ -186,6 +186,24 @@ public class ServiceServiceImpl implements ServiceService {
 
 		
 	}
+		
+	}
+	@Override
+	public int declineService(long id,String mail) {
+		// TODO Auto-generated method stub
+		Service s = getById(id);
+		try {
+			delete(s);
+			Account ac = new Account();
+			ac.setMail(mail);
+			this.mail.mailContent(ac, "Registation falied ! \n"
+					+ "Please Check Your Service Information And Re-register ! \n"
+					+ "Contact with Us: \n"
+					+ "http://localhost:8090/contact");
+			return 1;
+		} catch (Exception e) {
+			return -1;	// TODO: handle exception
+		}
 		
 	}
 }

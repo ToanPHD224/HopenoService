@@ -112,7 +112,7 @@
 														<label for="exampleInputEmail1">Ward</label>
 														<input type="text" value="${x.ward.name}"
 															class="form-control mb-2" />
-															<input type="text" value="${currentdate}" name="currentdate">
+															<input type="hidden" value="${currentdate}" name="currentdate">
 													</div>
 													
 												</div>

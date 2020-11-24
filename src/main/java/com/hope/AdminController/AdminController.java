@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,15 +13,21 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.hope.Repository.ServiceFeeRepo;
 import com.hope.Service.DateHelperService;
+import com.hope.Service.ServiceFeeService;
 import com.hope.Service.ServicePaymentService;
 import com.hope.Service.ServiceService;
+import com.hope.Service.UpLoadFileService;
 import com.hope.entities.Service;
+import com.hope.entities.ServiceFee;
 
 @Controller
 @RequestMapping("/admin/")
@@ -43,7 +51,6 @@ public class AdminController {
 			md.addAttribute("date", currentdate);
 		} else {
 			currentdate = date;
-			System.err.println(currentdate);
 			md.addAttribute("currentdate", currentdate);
 			md.addAttribute("message", message);
 
@@ -72,7 +79,7 @@ public class AdminController {
 		return admin + "registerserviceform";
 	}
 	@PostMapping("registerform")
-	public String acceptService(@RequestParam("action") String action, @RequestParam("id") long id,
+	public String registationService(@RequestParam("action") String action, @RequestParam("id") long id,
 			@RequestParam("mail") String mail, @RequestParam("currentdate") String currentdate, ModelMap md) {
 		    md.addAttribute("message", "falied!");
 			if (action.equals("accept")) {
@@ -85,19 +92,95 @@ public class AdminController {
 				
 			return "redirect:/admin/registerform?date="+currentdate;
 		} else {
+			md.addAttribute("message", "Falied!");
+			int status = service.declineService(id, mail);
+			if(status==1)
+			{
+				md.addAttribute("message", "Decline Susscess");
+			}	
 			return "redirect:/admin/registerform?date="+currentdate;
 		}
 
 	}
-
-	@GetMapping("servicesettings")
-	public String serviceSettings() {
-		return admin + "servicesettings";
+	@Autowired
+	private ServiceFeeRepo sVF;
+	@GetMapping("servicetype/{pageNumber}")
+	public String serviceSettings(@PathVariable("pageNumber") int pageNumber,ModelMap md) {
+		
+		Pageable pageable = PageRequest.of(pageNumber - 1, 3);
+		Page<ServiceFee> listServiceFee = sVF.findAll(pageable);
+		int currentPageNumber = listServiceFee.getNumber() + 1;
+		int beginIndex = Math.max(1, currentPageNumber - 6);
+		int endIndex = Math.min(beginIndex + 10, listServiceFee.getTotalPages());
+		md.addAttribute("totalPages", listServiceFee.getTotalPages());
+		md.addAttribute("currentPageNumber", currentPageNumber);
+		md.addAttribute("beginIndex", beginIndex);
+		md.addAttribute("endIndex", endIndex);
+		List<ServiceFee> list = new ArrayList<ServiceFee>();
+		for (ServiceFee serviceFee : listServiceFee) {
+			list.add(serviceFee);
+		}
+		md.addAttribute("size", list.size());	
+		System.out.println(list.size());
+		md.addAttribute("listServiceFee", list);
+		return admin + "servicetype";
 	}
-
+	
 	@GetMapping("/addservicetype")
-	public String addServiceType() {
+	public String addServiceType(ModelMap md) {
+		
+		ServiceFee serviceFee = new ServiceFee();
+		serviceFee.setStatus(true);
+		
+		
+		md.addAttribute("serviceFee",serviceFee);
 		return admin + "addservicetype";
+	}
+	@Autowired
+	private UpLoadFileService upS;
+	@PostMapping("/addservicetype")
+	public String addSercicetype(@RequestParam("action") String action,
+			@RequestParam("bookfee") float bookFee,
+			@RequestParam("name") String name,
+			@RequestParam("file") MultipartFile file,
+			HttpServletRequest request,
+			ModelMap md)
+	{
+		if(action.equals("save"))
+		{
+			
+	        if (file.isEmpty()) {
+	        	md.addAttribute("message", "Please select a file to upload");
+	            return "redirect:uploadStatus";
+	        }
+	        ServiceFee sv = new ServiceFee();
+			sv.setStatus(true);
+			sv.setImage(file.getOriginalFilename());
+			sv.setBooking_Fee(bookFee);
+			sv.setName(name);
+			System.out.println(file.getOriginalFilename());
+			int	check = upS.upFile("admin", file, request);
+			if(check ==-1)
+			{
+				md.addAttribute("mesage", "Falied");
+				return "redirect:/admin/addservicetype/";
+			}
+			else if (check == 0)
+			{
+				md.addAttribute("message", "Image is not pass 50 MB" );
+				return "redirect:/admin/addservicetype/";
+			}
+				
+			sVF.save(sv);
+			md.addAttribute("message", "Sussces");
+			return "redirect:/admin/servicetype/1";
+		}
+		else
+		{
+			return "redirect:/admin/servicetype/1";
+		}
+		
+		
 	}
 
 	@GetMapping("/showalluser")

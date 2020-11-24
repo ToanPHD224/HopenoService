@@ -84,7 +84,7 @@ public class AccountServiceImpl implements AccountService {
 				save(ac);
 				ConfirmationToken c = new ConfirmationToken(ac);
 				confirmationToken.save(c);
-				mailService.mailContent(ac, c,"To Cofirm you account please click that link "+c.getConfirmation_token());
+				mailService.mailContent(ac,"To Cofirm you account please click that link "+c.getConfirmation_token());
 				return true;
 			} catch (Exception e) {
 				return false;
