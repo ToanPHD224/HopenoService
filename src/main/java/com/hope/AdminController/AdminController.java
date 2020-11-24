@@ -299,7 +299,22 @@ public class AdminController {
 		md.addAttribute("listService", service);
 		return admin + "showservice";
 	}
-
+	@GetMapping("/serviceAction/{id}")
+	public String updateService(@PathVariable("id") long id)
+	{
+		Service sv = service.getById(id);
+		if(sv.isBanned()==true)
+		{
+			sv.setBanned(false);
+		}
+		else
+		{
+			sv.setBanned(true);
+		}	
+		service.update(sv);
+		return "redirect:/admin/showservice";
+	}
+	
 	@GetMapping("/showfeedback")
 	public String showFeedBack() {
 		return admin + "showfeedback";
