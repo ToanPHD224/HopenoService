@@ -77,10 +77,10 @@
                                         <td>
                                           <c:choose>
                                           	<c:when test="${x.banned == false }">
-                                          	  <button id="btnh" class="btn"><i class="fas fa-ban"></i> Disable </button>
+                                          	  <a  href="/admin/serviceAction/${x.id}" class="btn"><i class="fas fa-ban"></i> Disable </a>
                                           	</c:when>
                                           	<c:when test="${x.banned == true }">
-                                          	 <button id="btnh" class="btn"> <i class="fas fa-toggle-on"></i> Enable </button>
+                                          	 <a href="/admin/serviceAction/${x.id}" class="btn"> <i class="fas fa-toggle-on"></i> Enable </a>
                                           	</c:when>
                                           </c:choose>
                                         </td>
