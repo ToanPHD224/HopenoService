@@ -34,4 +34,5 @@ public interface ServiceRepo extends JpaRepository<Service, Long> , PagingAndSor
 	
 	public Page<Service> findAllByRegisteredAtAndStatus(Pageable page,Date date,boolean status);
 	public List<Service> findAllByStatus(boolean status);
+	public List<Service> findAllByMailAndStatus(String mail,boolean status);
 }

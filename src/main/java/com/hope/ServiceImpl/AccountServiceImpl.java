@@ -7,6 +7,8 @@ import java.util.Random;
 
 import org.hibernate.type.descriptor.java.DataHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -130,6 +132,18 @@ public class AccountServiceImpl implements AccountService {
 	public Account getAccount(String mail) {
 		// TODO Auto-generated method stub
 		return accountRepo.getAccount(mail);
+	}
+
+	@Override
+	public Page<Account> findAll(Pageable page) {
+		// TODO Auto-generated method stub
+		return accountRepo.findAll(page);
+	}
+
+	@Override
+	public Page<Account> findAllByMail(Pageable page, String mail) {
+		// TODO Auto-generated method stub
+		return accountRepo.findAllByMail(page, mail);
 	}
 	}
 

@@ -46,6 +46,8 @@ public class Service implements Serializable {
 	private float viewer;
 	@Column(name = "status")
 	private boolean status;
+	@Column(name = "banned")
+	private boolean banned;
 	@Column(name = "created_at")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;

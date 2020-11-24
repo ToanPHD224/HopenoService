@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hope.Repository.ServiceFeeRepo;
+import com.hope.Service.AccountService;
 import com.hope.Service.DateHelperService;
 import com.hope.Service.ServiceFeeService;
 import com.hope.Service.ServicePaymentService;
 import com.hope.Service.ServiceService;
 import com.hope.Service.UpLoadFileService;
+import com.hope.entities.Account;
 import com.hope.entities.Service;
 import com.hope.entities.ServiceFee;
 
@@ -58,7 +60,7 @@ public class AdminController {
 		if (page != null) {
 			pageNumber = Integer.parseInt(page);
 		}
-		Pageable pageable = PageRequest.of(pageNumber - 1, 2);
+		Pageable pageable = PageRequest.of(pageNumber - 1,1);
 		Page<Service> getPage = service.findAllByRegistedAtAndStatus(pageable, datesv.convetDatetoSql(currentdate),
 				false);
 		int currentPageNumber = getPage.getNumber() + 1;
@@ -73,6 +75,7 @@ public class AdminController {
 		for (Service service : getPage) {
 			list.add(service);
 		}
+		md.addAttribute("size", list.size());
 		// List<Service> service1 =
 		// service.getAllRegistationServive(datesv.convetDatetoSql(currentdate));
 		md.addAttribute("listService", list);
@@ -232,19 +235,68 @@ public class AdminController {
 			return "redirect:/admin/servicetype/1";
 		}
 	}
-
+	@Autowired
+	private AccountService ac;
 	@GetMapping("/showalluser")
-	private String showAllUser() {
+	private String showAllUser(ModelMap md,@RequestParam(value = "pageNumber",defaultValue = "1",required = false) int pageNumber ,
+			@RequestParam(defaultValue = "",value = "mail",required = false) String  mail ) {
+		Pageable page = PageRequest.of(pageNumber - 1, 6);
+		Page<Account> getPage = ac.findAll(page);
+		if(mail.length()>0)
+		{
+			getPage = ac.findAllByMail(page, mail);
+		}
+		int currentPageNumber = getPage.getNumber() + 1;
+		int beginIndex = Math.max(1, currentPageNumber - 6);
+		int endIndex = Math.min(beginIndex + 10, getPage.getTotalPages());
+		md.addAttribute("totalPages", getPage.getTotalPages());
+		md.addAttribute("currentPageNumber", currentPageNumber);
+		md.addAttribute("beginIndex", beginIndex);
+		md.addAttribute("endIndex", endIndex);
+
+		List<Account> list = new ArrayList<Account>();
+		for (Account account : getPage) {
+			list.add(account);
+		}
+		md.addAttribute("size", list.size());
+		md.addAttribute("listUser",list);
 		return admin + "showalluser";
 	}
-
+	@GetMapping("/disableaccount/{id}")
+	public String disableAccount(@PathVariable(value = "id") long id)
+	{
+		Account acount = ac.getById(id);
+		if(acount.isBanned()==true)
+		{
+			acount.setBanned(false);
+		}
+		else
+		{
+			acount.setBanned(true);
+		}	
+		ac.update(acount);
+		return "redirect:/admin/showalluser";
+	}
+	
+	
 	@GetMapping("/showpayment")
 	public String showPayment() {
 		return admin + "showpaymentbill";
 	}
 
 	@GetMapping("/showservice")
-	public String showService() {
+	public String showService(ModelMap md,@RequestParam(value = "mail",defaultValue = "",required = false) String mail) {
+		List<Service> service = null ; 
+		if(mail.length()>0)
+		{
+			service = this.service.findAllByMail(mail,true);
+			
+		}
+		else
+		{
+			service = this.service.findAllByStatus(true);
+		}	
+		md.addAttribute("listService", service);
 		return admin + "showservice";
 	}
 

@@ -63,5 +63,7 @@ public class Account implements Serializable {
 	private boolean banned;
 	@Column(name = "image")
 	private String image;
+	@Column(name = "phone")
+	private String phone;
 	public Account() {}
 }

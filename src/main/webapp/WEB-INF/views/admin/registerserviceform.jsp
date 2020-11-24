@@ -21,12 +21,15 @@
 
 
 			<div class="card-header">
-				<div class="row">
+				
 
 
 
 
-
+				<div class="col-sm-12">
+					
+					<div class="row" style="width: 99%">
+					
 					<div class="col-sm-9">
 						<div class="col-sm-6">
 							<h3 >Registation</h3>
@@ -38,10 +41,14 @@
 						<input type="date" id="date" class="float-right form-control">
 
 					</div>
-
-
-
+					
+					</div>
+				
 				</div>
+
+
+
+				
 				<div class="row">
 					
 						<div class="col-sm-12">
@@ -76,7 +83,7 @@
 				
 						<c:forEach var="x" items="${listService}">
 
-							<div class="col-sm-6">
+							
 								<form action="/admin/registerform" method="POST">
 
 									<div class="card">
@@ -136,7 +143,7 @@
 										<!-- /.row -->
 									</div>
 								</form>
-							</div>
+							
 
 
 						</c:forEach>

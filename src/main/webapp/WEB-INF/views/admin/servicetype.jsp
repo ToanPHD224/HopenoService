@@ -61,14 +61,14 @@
 												
 													<c:choose>
 														<c:when test="${x.status==true }">
-															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;" class="btn-dark">
+															<button  type="submit" name="action" value="delete"
+															style="border: none; opacity: 0.7; background-color: red" class="btn-dark">
 															<i class="fas fa-power-off"></i>
 															</button>
 														</c:when>
 														<c:when test="${x.status==false}">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;" class="btn-dark">
+															style="border: none; opacity: 0.7;background-color: green;" class="btn-dark">
 															<i class="fas fa-toggle-on"></i>
 															</button>
 														</c:when>
@@ -140,13 +140,13 @@
 													<c:choose>
 														<c:when test="${x.status==true }">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;" class="btn-dark">
+															style="border: none; opacity: 0.7;background-color: red;" class="btn-dark">
 															<i class="fas fa-power-off"></i>
 															</button>
 														</c:when>
 														<c:when test="${x.status==false}">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;" class="btn-dark">
+															style="border: none; opacity: 0.7;background-color: green;" class="btn-dark">
 															<i class="fas fa-toggle-on"></i>
 															</button>
 														</c:when>
@@ -205,9 +205,9 @@
 							<c:otherwise>
 
 								<form action="/admin/updatetypeservice" method="GET">
-									<div class="col-sm-12">
+									<div class="col-sm-12 ">
 
-										<div class="card card-success">
+										<div class="card card-success  " >
 											<div class="card-header">
 												<h3 class="card-title">${x.name}</h3>
 												<div class="float-right">
@@ -219,13 +219,13 @@
 													<c:choose>
 														<c:when test="${x.status==true }">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;" class="btn-dark">
+															style="border: none; opacity: 0.7;background-color: red;" class="btn-dark">
 															<i class="fas fa-power-off"></i>
 															</button>
 														</c:when>
 														<c:when test="${x.status==false}">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;" class="btn-dark">
+															style="border: none; opacity: 0.7;background-color: green;" class="btn-dark">
 															<i class="fas fa-toggle-on"></i>
 															</button>
 														</c:when>

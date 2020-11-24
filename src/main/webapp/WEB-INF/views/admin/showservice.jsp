@@ -1,9 +1,7 @@
-<style>
-    #btnh:hover{
-        background-color:green;
-        opacity: 0.8;
-    }
-</style>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<c:url value="/resources" var="cssroot" />
+
 <div class="row">
     <div class="col-sm-12">
         <div class="card mt-3">
@@ -18,16 +16,18 @@
                         
                         <div class="col-sm-12 col-md-8"></div>
                         <div class="col-sm-12 col-md-4">  
+                        <form action="/admin/showservice" method="GET">
                             <div class="card-tools">
                                 <div class="input-group input-group-sm">
-                                  <input type="text"  class="form-control" id="values" placeholder="Search Service">
+                                  <input type="text"  class="form-control" name="mail" placeholder="Search Service">
                                   <div class="input-group-append">
-                                    <div class="btn btn-primary" id="service">
+                                    <button type="submit" class="btn btn-primary" id="service">
                                       <i class="fas fa-search"></i>
-                                    </div>
+                                    </button>
                                   </div>
                                 </div>
                               </div>
+                           </form>   
                         </div>   
                             
                     </div>
@@ -46,7 +46,7 @@
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                            Distric</th>
+                                            Districs</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="Engine version: activate to sort column ascending">
                                             Account id</th>
@@ -58,24 +58,34 @@
                                             Image</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Status</th>
+                                            Banned</th>
                                             <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                              <c:forEach var="x" items="${listService}">
                                     <tr role="row" class="odd">
-                                        <td tabindex="0" class="sorting_1">Service Name</td>
-                                        <td>Service</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td>1.7</td>
-                                        <td>A</td>
-                                        <td>A</td>
-                                        <td>Ok</td>
+                                        <td tabindex="0" class="sorting_1">${x.name}</td>
+                                        <td>${x.address}</td>
+                                        <td>${x.ward.name}</td>
+                                        <td>${x.account.name}</td>
+                                        <td>${x.createdAt}</td>
                                         <td>
-                                            <button id="btnh" class="btn"><i class="fas fa-ban"></i> Disable </button>
+                                        <img alt="" width="20%" src="${cssroot}/image/admin/${x.image}">
+                                        </td>
+                                        <td>${x.banned}</td>
+                                        <td>
+                                          <c:choose>
+                                          	<c:when test="${x.banned == false }">
+                                          	  <button id="btnh" class="btn"><i class="fas fa-ban"></i> Disable </button>
+                                          	</c:when>
+                                          	<c:when test="${x.banned == true }">
+                                          	 <button id="btnh" class="btn"> <i class="fas fa-toggle-on"></i> Enable </button>
+                                          	</c:when>
+                                          </c:choose>
                                         </td>
                                     </tr>
-                                   
+                                </c:forEach>
                                 </tbody>
                                 <tfoot>
                                     <tr>

@@ -19,4 +19,5 @@ public interface ServiceService extends CrudEnties<Service>  {
 	public List<Service> findAllByStatus(boolean status);
 	public int registationService(String mail,long id);
 	public int declineService(long id,String mail);
+	public List<Service> findAllByMail(String mail,boolean status);
 }

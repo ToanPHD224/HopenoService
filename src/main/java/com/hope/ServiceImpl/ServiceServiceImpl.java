@@ -206,6 +206,12 @@ public class ServiceServiceImpl implements ServiceService {
 		}
 		
 	}
+
+	@Override
+	public List<Service> findAllByMail(String mail,boolean status) {
+		// TODO Auto-generated method stub
+		return servicerepo.findAllByMailAndStatus(mail, status);
+	}
 }
 
 
