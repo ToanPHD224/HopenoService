@@ -14,8 +14,8 @@
 <link rel="stylesheet"
 	href="${cssroot}/plugins/fontawesome-free/css/all.min.css">
 <!-- Ionicons -->
-<link rel="stylesheet"
-	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- <link rel="stylesheet"
+	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
 <!-- Tempusdominus Bbootstrap 4 -->
 <link rel="stylesheet"
 	href="${cssroot}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
@@ -27,7 +27,7 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="${cssroot}/dist/css/adminlte.min.css">
 <!-- overlayScrollbars -->
-
+<link rel="stylesheet" href="${cssroot}/plugins/summernote/summernote-bs4.css">
 <link rel="stylesheet"
 	href="${cssroot}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 	
@@ -42,9 +42,9 @@
 <link rel="stylesheet"
 	href="${cssroot}/plugins/summernote/summernote-bs4.css">
 <!-- Google Font: Source Sans Pro -->
-<link
+<!-- <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
-	rel="stylesheet">
+	rel="stylesheet"> -->
 		<script src="${cssroot}/plugins/jquery/jquery.min.js"></script>
 	<!-- jQuery UI 1.11.4 -->
 	<script src="${cssroot}/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -72,6 +72,7 @@
 	<script src="${cssroot}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- ChartJS -->
 	<script src="${cssroot}/plugins/chart.js/Chart.min.js"></script>
+	
 	<!-- Sparkline -->
 	<script src="${cssroot}/plugins/sparklines/sparkline.js"></script>
 	<!-- JQVMap -->
@@ -100,6 +101,8 @@
 	<script src="${cssroot}/dist/js/pages/dashboard.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="${cssroot}/dist/js/demo.js"></script>
+	<script src="${cssroot}/plugins/summernote/summernote-bs4.min.js"></script>
+		<script src="${cssroot}/plugins/chart.js/hightchart.js"></script>
 	
 </body>
 </html>

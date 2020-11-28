@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url value="/resources" var="cssroot" />
-<c:url var="firstUrl" value="/admin/showalluser/1" />
-<c:url var="lastUrl" value="/admin/showalluser?pageNumber=${totalPages}" />
-<c:url var="prevUrl" value="/admin/showalluser?pageNumber=${currentPageNumber - 1}" />
-<c:url var="nextUrl" value="/admin/showalluser?pageNumber=${currentPageNumber + 1}" />
+<c:url var="firstUrl" value="/admin/users/getall/1" />
+<c:url var="lastUrl" value="/admin//users/getall?pageNumber=${totalPages}" />
+<c:url var="prevUrl" value="/admin/users/getall?pageNumber=${currentPageNumber - 1}" />
+<c:url var="nextUrl" value="/admin/users/getall?pageNumber=${currentPageNumber + 1}" />
 
 <div class="row">
   <div class="card card-solid mt-3 " style="width: 100%">
@@ -19,7 +19,7 @@
             </div>
             <div class="col-sm-9">
               <div class="card-tools float-right mr-3 mt-3">
-                <form action="/admin/showalluser">
+                <form action="/admin/users/getall">
                 <div class="input-group input-group-sm">
               
                   <input type="text"  class="form-control" name="mail" placeholder="Search By Mail">
@@ -101,13 +101,13 @@
                  
                 <c:choose>
                 	<c:when test="${x.banned == false }">
-                		<a href="/admin/disableaccount/${x.id}" class="btn  btn-sm btn-danger">
+                		<a href="/admin/users/action/${x.id}" class="btn  btn-sm btn-danger">
                 		  <i class="fas fa-power-off"></i> Disable
                 		</a>
                 	
                 	</c:when>
                 	<c:when test="${x.banned == true }">
-                		<a href="/admin/disableaccount/${x.id}" class="btn  btn-sm btn-success">
+                		<a href="/admin/users/action/${x.id}" class="btn  btn-sm btn-success">
                 		 <i class="fas fa-toggle-on"></i> Enable
                 		</a>
                 	
@@ -146,7 +146,7 @@
 							</c:otherwise>
 						</c:choose>
 						<c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
-							<c:url var="pageUrl" value="/admin/showalluser?pageNumber=${i}" />
+							<c:url var="pageUrl" value="/admin/users/getall?pageNumber=${i}" />
 							<c:choose>
 								<c:when test="${i == currentPageNumber}">
 									<li class="page-item active"><a class="page-link"

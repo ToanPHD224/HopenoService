@@ -9,6 +9,7 @@ public class WebSiteMeshFilter extends ConfigurableSiteMeshFilter {
 	        builder.addDecoratorPath("/*", "/WEB-INF/views/decorators/customers/customer.jsp");
 	        builder.addDecoratorPath("/user/*", "/WEB-INF/views/decorators/users/users.jsp");
 	        builder.addDecoratorPath("/admin/*", "/WEB-INF/views/decorators/admin/admin.jsp");
+	        builder.addExcludedPath("/error");
 	           
 	    }
 }	

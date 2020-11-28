@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url value="/resources" var="cssroot" />
-<c:url var="firstUrl" value="/admin/servicetype/1" />
-<c:url var="lastUrl" value="/admin/servicetype/${totalPages}" />
-<c:url var="prevUrl" value="/admin/servicetype/${currentPageNumber - 1}" />
-<c:url var="nextUrl" value="/admin/servicetype/${currentPageNumber + 1}" />
+<c:url var="firstUrl" value="/admin/servicetype/getall/1" />
+<c:url var="lastUrl" value="/admin/servicetype/getall/${totalPages}" />
+<c:url var="prevUrl" value="/admin/servicetype/getall/${currentPageNumber - 1}" />
+<c:url var="nextUrl" value="/admin/servicetype/getall/${currentPageNumber + 1}" />
 <div class="row">
 	<div class="content-header">
 		<div class="container-fluid">
@@ -47,14 +47,14 @@
 							<c:when test="${size >=3 }">
 								
 									<div class="col-sm-4">
-									<form action="/admin/updatetypeservice" method="GET">
-										<div class="card card-success">
+									<form action="/admin/servicetype/action" method="GET">
+										<div class="card card-primary">
 											<div class="card-header">
 												<h3 class="card-title">${x.name}</h3>
 												<input type="hidden" value="${x.id}" name="id" />
 												<div class="float-right">
 													<button type="submit" name="action" value="update"
-														style="border: none; opacity: 0.7;" class="btn-dark"
+														style="border: none;  " class="btn-dark"
 														data-toggle="modal" data-target="#modalPoll-1">
 														<i class="fas fa-wrench"></i>
 													</button>
@@ -62,13 +62,13 @@
 													<c:choose>
 														<c:when test="${x.status==true }">
 															<button  type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7; background-color: red" class="btn-dark">
+															style="border: none;   " class="btn-dark">
 															<i class="fas fa-power-off"></i>
 															</button>
 														</c:when>
 														<c:when test="${x.status==false}">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;background-color: green;" class="btn-dark">
+															style="border: none;  background-color: green;" class="btn-dark">
 															<i class="fas fa-toggle-on"></i>
 															</button>
 														</c:when>
@@ -127,26 +127,27 @@
 							<c:when test="${size == 2}">
 								
 									<div class="col-sm-6">
-									<form action="/admin/updatetypeservice" method="GET">
-										<div class="card card-success">
+									<form action="/admin/servicetype/getall" method="GET">
+										<div class="card card-primary">
 											<div class="card-header">
 												<h3 class="card-title">${x.name}</h3>
+													<input type="hidden" value="${x.id}" name="id" />
 												<div class="float-right">
 													<button type="submit" name="action" value="update"
-														style="border: none; opacity: 0.7;" class="btn-dark"
+														style="border: none;  " class="btn-dark"
 														data-toggle="modal" data-target="#modalPoll-1">
 														<i class="fas fa-wrench"></i>
 													</button>
 													<c:choose>
 														<c:when test="${x.status==true }">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;background-color: red;" class="btn-dark">
+															style="border: none;  ;" class="btn-dark">
 															<i class="fas fa-power-off"></i>
 															</button>
 														</c:when>
 														<c:when test="${x.status==false}">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;background-color: green;" class="btn-dark">
+															style="border: none;  background-color: green;" class="btn-dark">
 															<i class="fas fa-toggle-on"></i>
 															</button>
 														</c:when>
@@ -204,28 +205,33 @@
 							</c:when>
 							<c:otherwise>
 
-								<form action="/admin/updatetypeservice" method="GET">
+								<form action="admin/servicetype/action" method="GET">
 									<div class="col-sm-12 ">
 
-										<div class="card card-success  " >
+									<div class="row">
+										
+										<div class="col-sm-2"></div>
+									<div class="col-sm-8">
+											<div class="card card-primary  " >
 											<div class="card-header">
 												<h3 class="card-title">${x.name}</h3>
+													<input type="hidden" value="${x.id}" name="id" />
 												<div class="float-right">
 													<button type="submit" name="action" value="update"
-														style="border: none; opacity: 0.7;" class="btn-dark"
+														style="border: none;  " class="btn-dark"
 														data-toggle="modal" data-target="#modalPoll-1">
 														<i class="fas fa-wrench"></i>
 													</button>
 													<c:choose>
 														<c:when test="${x.status==true }">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;background-color: red;" class="btn-dark">
+															style="border: none;  ;" class="btn-dark">
 															<i class="fas fa-power-off"></i>
 															</button>
 														</c:when>
 														<c:when test="${x.status==false}">
 															<button type="submit" name="action" value="delete"
-															style="border: none; opacity: 0.7;background-color: green;" class="btn-dark">
+															style="border: none;  background-color: green;" class="btn-dark">
 															<i class="fas fa-toggle-on"></i>
 															</button>
 														</c:when>
@@ -276,6 +282,12 @@
 											</div>
 											<!-- /.card-body -->
 										</div>
+									
+									</div>
+									<div class="col-sm-2"></div>
+									
+									</div>
+									
 
 									</div>
 								</form>
@@ -311,7 +323,7 @@
 							</c:otherwise>
 						</c:choose>
 						<c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
-							<c:url var="pageUrl" value="/admin/servicetype/${i}" />
+							<c:url var="pageUrl" value="/admin/servicetype/getall/${i}" />
 							<c:choose>
 								<c:when test="${i == currentPageNumber}">
 									<li class="page-item active"><a class="page-link"
@@ -358,7 +370,7 @@
 	}); */
 
 	$("#add").click(function() {
-		var url = "http://localhost:8090/admin/addservicetype";
+		var url = "http://localhost:8090/admin/servicetype/add";
 		window.location.href = url;
 	});
 </script>

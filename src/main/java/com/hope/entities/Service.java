@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,10 +22,13 @@ import com.fasterxml.jackson.core.sym.Name;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "service")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 public class Service implements Serializable {
 	@Id
@@ -32,6 +36,7 @@ public class Service implements Serializable {
 	private long id;
 	@Column(name = "address",columnDefinition = "nvarchar(250)",length = 250)
 	private String address;
+	@Lob
 	@Column(name = "content",columnDefinition = "nvarchar(250)",length = 250)
 	private String content;
 	@Column(name = "image")
@@ -45,7 +50,7 @@ public class Service implements Serializable {
 	@Column(name = "viewer")
 	private float viewer;
 	@Column(name = "status")
-	private boolean status;
+	private int status;
 	@Column(name = "banned")
 	private boolean banned;
 	@Column(name = "created_at")

@@ -7,5 +7,5 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface UpLoadFileService {
-		public int upFile(String dir,MultipartFile file);
+		public int upFile(String dir,MultipartFile file,HttpServletRequest request);
 }

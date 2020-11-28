@@ -16,10 +16,10 @@
                         
                         <div class="col-sm-12 col-md-8"></div>
                         <div class="col-sm-12 col-md-4">  
-                        <form action="/admin/showservice" method="GET">
+                        <form action="/admin/service/getall" method="GET">
                             <div class="card-tools">
                                 <div class="input-group input-group-sm">
-                                  <input type="text"  class="form-control" name="mail" placeholder="Search Service">
+                                  <input type="text"  class="form-control" name="id" placeholder="Search Service">
                                   <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary" id="service">
                                       <i class="fas fa-search"></i>
@@ -40,65 +40,69 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1"
                                             aria-label="Rendering engine: activate to sort column descending"
-                                            aria-sort="ascending">Service Name</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                            colspan="1" aria-label="Browser: activate to sort column ascending">Address
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                            colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                            Districs</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                            colspan="1" aria-label="Engine version: activate to sort column ascending">
-                                            Account id</th>
+                                            aria-sort="ascending">Service Id</th>
+                                      
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Createdat</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                            Service Name</th>
+                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Image</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                            colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Banned</th>
+                                            Status</th>
+                                         
                                             <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                               <c:forEach var="x" items="${listService}">
                                     <tr role="row" class="odd">
-                                        <td tabindex="0" class="sorting_1">${x.name}</td>
-                                        <td>${x.address}</td>
-                                        <td>${x.ward.name}</td>
-                                        <td>${x.account.name}</td>
-                                        <td>${x.createdAt}</td>
+                                        <td tabindex="0" class="sorting_1"><c:out value="${x.id}"/></td>
+                                     
+                                        <td><c:out value="${x.name}"/></td>
+                                         <td>
+                                         <c:choose>
+                                         	<c:when test="${x.status == 1}">
+                                         		
+                                         		Intactive
+                                         	
+                                         	</c:when>
+                                         	<c:when test="${x.status == 2 }">
+                                         	
+                                         		Active
+                                         	</c:when>
+                                         	
+                                         
+                                         
+                                         </c:choose>
+                                         </td>
+                                   
                                         <td>
-                                        <img alt="" width="20%" src="${cssroot}/image/admin/${x.image}">
-                                        </td>
-                                        <td>${x.banned}</td>
-                                        <td>
-                                          <c:choose>
+                                        <%--   <c:choose>
                                           	<c:when test="${x.banned == false }">
-                                          	  <a  href="/admin/serviceAction/${x.id}" class="btn"><i class="fas fa-ban"></i> Disable </a>
+                                          	  <a  href="/admin/service/action/${x.id}" class="btn"><i class="fas fa-ban"></i> Disable </a>
                                           	</c:when>
                                           	<c:when test="${x.banned == true }">
-                                          	 <a href="/admin/serviceAction/${x.id}" class="btn"> <i class="fas fa-toggle-on"></i> Enable </a>
+                                          	 <a href="/admin/service/action/${x.id}" class="btn"> <i class="fas fa-toggle-on"></i> Enable </a>
                                           	</c:when>
-                                          </c:choose>
+                                          </c:choose> --%>
+                                           <a href="/admin/service/viewdetail/<c:out value="${x.id}"/>" class="btn"><i class="fas fa-info-circle"></i> View Details </a>
                                         </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th rowspan="1" colspan="1">Service Name</th>
-                                        <th rowspan="1" colspan="1">Service Type</th>
-                                        <th rowspan="1" colspan="1">Total Book</th>
-                                        <th rowspan="1" colspan="1">Toltal Pay</th>
-                                        <th rowspan="1" colspan="1">Total Fee</th>
-                                        <th rowspan="1" colspan="1">Month</th>
-                                        <th rowspan="1" colspan="1">Status</th>
-                                        <th rowspan="1" colspan="1"></th>
+                                <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Rendering engine: activate to sort column descending"
+                                            aria-sort="ascending">Service Name</th>
+                                     
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-label="CSS grade: activate to sort column ascending">
+                                            SettingsFee</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-label="CSS grade: activate to sort column ascending">
+                                            Status</th>
+                                            <th></th>
                                     </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -125,15 +129,4 @@
             "responsive": true,
         });
     });
-    $("#service").click(function () {
-		var service = $("#values").val();
-		$.ajax({
-			url: "http://localhost:8090/admin/registerform",
-			data: {
-				name: service
-			}
-
-		});
-
-	});
 </script>

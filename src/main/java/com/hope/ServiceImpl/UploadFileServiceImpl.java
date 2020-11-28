@@ -2,9 +2,12 @@ package com.hope.ServiceImpl;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,25 +15,20 @@ import com.hope.Service.UpLoadFileService;
 @Service
 public class UploadFileServiceImpl implements UpLoadFileService {
 	
-	
+
 	@Override
-	public int upFile(String dir, MultipartFile file) {
-		File file1 = new File(this.getFolderUpload(dir), file.getOriginalFilename());
+	public int upFile(String dir, MultipartFile file,HttpServletRequest request) {
+		
+		System.out.println(file.getSize());
 		if(file.getSize() >= 52428800)
 		{
 			return 0;
 		}
-        if (!file1.exists()) {
-            if (file1.mkdir()) {
-                System.out.println("Directory is created!");
-            } else {
-                System.out.println("Failed to create directory!");
-            }
-        }
         try {
 			try {
-				file.transferTo(new File(file1.getAbsolutePath()));
-			} catch (IOException e) {
+				file.transferTo(new File(this.getFolderUpload(dir,request), file.getOriginalFilename()));
+				return 1;
+			} catch (/*IOException*/ Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -42,8 +40,10 @@ public class UploadFileServiceImpl implements UpLoadFileService {
 		}
 		return 1;
 	}
-	public File getFolderUpload(String dir) {
-	    File folderUpload = new File("C:\\Users\\84911\\Desktop\\DoAnTotNghiep\\HopenoService\\src\\main\\webapp\\resources\\image\\"+dir);
+	public File getFolderUpload(String dir,HttpServletRequest request) {
+		String rootDir=request.getSession().getServletContext().getRealPath("/");
+	    File folderUpload = new File(rootDir+"\\resources\\image\\"+dir);
+	    System.out.println(folderUpload);
 	    if (!folderUpload.exists()) {
 	      folderUpload.mkdirs();
 	    }

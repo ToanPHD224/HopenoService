@@ -15,7 +15,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <f:form action="/admin/updatetypeservice" modelAttribute="serviceFee" method="POST" enctype="multipart/form-data">
+                                <f:form action="/admin/servicetype/update" modelAttribute="serviceFee" method="POST" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nameoftype">Name of Type</label>

@@ -17,5 +17,7 @@ public interface AccountRepo extends JpaRepository<Account, Long> , PagingAndSor
 	@Query(value ="Select * from account  where mail =:mail and status = 0"  ,  nativeQuery = true)
 	public Account getAccount(@Param("mail") String mail);
 	public Page<Account> findAllByMail(Pageable page,String mail);
+	@Query(value = "select count(*) from account",nativeQuery = true)
+	public String countAcount();
 	
 }

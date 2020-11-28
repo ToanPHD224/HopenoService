@@ -8,7 +8,6 @@ import com.hope.entities.Payment;
 public interface PaymentService extends CrudEnties<Payment> {
 	public float getAmountByServiceAndTime(float _start, float duration, long service);
 
-	public List<Payment> getAllPaymentByMonth(Date startDate, Date endDate);
 
 	public List<Payment> getAllPayMent(Date startDate, Date endDate, long idservice);
 }

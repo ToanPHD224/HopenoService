@@ -86,7 +86,7 @@ public class AccountServiceImpl implements AccountService {
 				save(ac);
 				ConfirmationToken c = new ConfirmationToken(ac);
 				confirmationToken.save(c);
-				mailService.mailContent(ac,"To Cofirm you account please click that link "+c.getConfirmation_token());
+				mailService.mailContent(ac,"To Cofirm you account please click that link "+c.getConfirmation_token(),"Complete Registation");
 				return true;
 			} catch (Exception e) {
 				return false;
@@ -144,6 +144,12 @@ public class AccountServiceImpl implements AccountService {
 	public Page<Account> findAllByMail(Pageable page, String mail) {
 		// TODO Auto-generated method stub
 		return accountRepo.findAllByMail(page, mail);
+	}
+
+	@Override
+	public String countAcount() {
+		// TODO Auto-generated method stub
+		return accountRepo.countAcount();
 	}
 	}
 

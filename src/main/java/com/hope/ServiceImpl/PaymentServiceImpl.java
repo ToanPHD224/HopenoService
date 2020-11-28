@@ -53,11 +53,6 @@ public class PaymentServiceImpl implements PaymentService {
 		return totalfee;
 	}
 
-	@Override
-	public List<Payment> getAllPaymentByMonth(Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
-		return paymentrp.getAllPaymentByMonth(startDate, endDate);
-	}
 
 	@Override
 	public List<Payment> getAllPayMent(Date startDate, Date endDate, long idservice) {

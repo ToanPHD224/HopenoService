@@ -30,7 +30,7 @@ public class ServiceFee implements Serializable {
 	private float booking_Fee;
 	@Column(name = "name",columnDefinition = "nvarchar(250)" ,length = 250)
 	private String name;
-	@OneToMany(mappedBy = "servicefee",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "servicefee")
 	private Set<Service> service;
 	@Column(name = "status")
 	private boolean status;

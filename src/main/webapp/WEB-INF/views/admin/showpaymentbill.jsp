@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<c:url value="/resources" var="cssroot" />
 <div class="row">
     <div class="col-sm-12">
         <div class="card mt-3">
@@ -10,15 +12,42 @@
                 <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
                         
-                        <div class="col-sm-12 col-md-8">  <button class="btn"><i class="fas fa-bell"></i> SendBill </button> </div>
-                        <div class="col-sm-12 col-md-4">
-                            <div class="row">
-                                <div class="col-sm-2 mt-2">Search</div>
-                                <div class="col-sm-10">
-                                    <input type="month" id="month" class="form-control w-28 float-right">
+                        <div class="col-sm-12 col-md-8">
+                         <div class="row"> <a href="/admin/service/payment/sendpayment" class="btn"><i class="fas fa-bell"></i> SendBill </a> </div>
+                          <div class="row">
+                     		<div class="col-sm-12">
+                     			<p class="ml-3"> ${message} </p>
+                     		</div>
+                     	</div>
+                          </div>
+                          
+                        
+                     	<div class="col-sm-12 col-md-4">
+                     	
+                     		 <div class="card-tools ">
+                                <div class="input-group input-group-sm">
+									  <select class="form-control" id="month" name="month">
+									    <option value="1">1</option>
+									    <option value="2">2</option>
+									    <option value="3">3</option>
+									    <option value="4">4</option>
+									    <option value="5">5</option>
+									    <option value="6">6</option>
+									    <option value="7">7</option>
+									    <option value="8">8</option>
+									    <option value="9">9</option>
+									    <option value="10">10</option>
+									    <option value="11">11</option>
+									    <option value="12">12</option>
+									  </select>
+                                  <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary" id="send">
+                                      <i class="fas fa-search"></i>
+                                    </button>
+                                  </div>
                                 </div>
-                            </div>
-                        </div>
+                              </div>
+                     	</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -44,7 +73,7 @@
                                             Total Fee</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Month</th>
+                                            Payment Send At</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
                                             Status</th>
@@ -52,19 +81,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	<c:forEach var="x"  items="${listPayment}">
                                     <tr role="row" class="odd">
-                                        <td tabindex="0" class="sorting_1">Service Name</td>
-                                        <td>Service</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td>1.7</td>
-                                        <td>A</td>
-                                        <td>A</td>
-                                        <td>Ok</td>
+                                        <td tabindex="0" class="sorting_1"><a href="/admin/service/viewdetail/${x.service.id}">${x.service.name} </a> </td>
+                                        <td>${x.service.servicefee.name}</td>
+                                        <td>${x.totalBook}</td>
+                                        <td>${x.totalPay}</td>
+                                        <td>${x.totalFee}</td>
+                                        <td>${x.paymentDate}</td>
+                                        <td>${x.status}</td>
                                         <td>
                                             <button class="btn"><i class="fas fa-bell"></i></button>
                                         </td>
                                     </tr>
-                                   
+                                  </c:forEach> 
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -73,7 +103,7 @@
                                         <th rowspan="1" colspan="1">Total Book</th>
                                         <th rowspan="1" colspan="1">Toltal Pay</th>
                                         <th rowspan="1" colspan="1">Total Fee</th>
-                                        <th rowspan="1" colspan="1">Month</th>
+                                        <th rowspan="1" colspan="1">Payment Send At</th>
                                         <th rowspan="1" colspan="1">Status</th>
                                         <th rowspan="1" colspan="1"></th>
                                     </tr>
@@ -104,15 +134,12 @@
             "responsive": true,
         });
     });
-    $("#month").change(function () {
+    $("#send").click(function () {
 		var xDate = $("#month").val();
-		$.ajax({
-			url: "http://localhost:8090/admin/registerform",
-			data: {
-				date: xDate,
-			}
+		var url= "http://localhost:8090/admin/service/payment/getbill?month="+xDate;
+		window.location.href = url;
 
-		});
+	
 
 	});
 </script>

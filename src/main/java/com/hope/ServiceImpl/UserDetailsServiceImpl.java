@@ -31,4 +31,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return new User(ac.getMail(),ac.getPassword(),grantedAuthorities);
 	}
 }
-
+ 

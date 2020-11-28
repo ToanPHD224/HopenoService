@@ -1,5 +1,7 @@
 package com.hope.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "service_payment")
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 public class ServicePayment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +36,11 @@ public class ServicePayment {
 	private float totalPay;
 	@Column(name = "total_fee")
 	private float totalFee;
-	@Column(name = "month")
-	private float month;
+	@Column(name = "payment_date")
+	private Date paymentDate;
 	@Column(name = "status")
 	private boolean status;
-	public ServicePayment(int totalBook, Service service, String name, float totalPay, float totalFee, float month,
+	public ServicePayment(int totalBook, Service service, String name, float totalPay, float totalFee, Date paymentDate,
 			boolean status) {
 		super();
 		this.totalBook = totalBook;
@@ -41,9 +48,10 @@ public class ServicePayment {
 		this.name = name;
 		this.totalPay = totalPay;
 		this.totalFee = totalFee;
-		this.month = month;
+		this.paymentDate = paymentDate;
 		this.status = status;
 	}
+	public ServicePayment(){}
 	
 		
 }

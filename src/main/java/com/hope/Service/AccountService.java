@@ -13,5 +13,5 @@ public interface AccountService extends CrudEnties<Account> {
 	public Account getAccount(String mail);
 	public Page<Account> findAll(Pageable page);
 	public Page<Account> findAllByMail(Pageable page,String mail);
-	
+	 public String countAcount();	
 }	

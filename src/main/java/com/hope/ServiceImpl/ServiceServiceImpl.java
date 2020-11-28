@@ -109,13 +109,13 @@ public class ServiceServiceImpl implements ServiceService {
 	}
 
 	@Override
-	public Page<Service> findAllByRegistedAtAndStatus(org.springframework.data.domain.Pageable page, Date date,boolean status) {
+	public Page<Service> findAllByRegistedAtAndStatus(org.springframework.data.domain.Pageable page, Date date,int status) {
 		// TODO Auto-generated method stub
 		return servicerepo.findAllByRegisteredAtAndStatus(page, date,status);
 	}
 
 	@Override
-	public List<Service> findAllByStatus(boolean status) {
+	public List<Service> findAllByStatus(int status) {
 		// TODO Auto-generated method stub
 		return servicerepo.findAllByStatus(status);
 	}
@@ -140,7 +140,7 @@ public class ServiceServiceImpl implements ServiceService {
 				Account acount = ac.getAccountByMail(mail);
 				acount.setRole(roleService.getById(2));
 				Service s = getById(id);
-				s.setStatus(true);
+				s.setStatus(1);
 				s.setAccount(acount);
 				s.setCreatedAt(date.convetDatetoSql(dtf.format(now)));
 				s.setViewer(0);
@@ -169,10 +169,11 @@ public class ServiceServiceImpl implements ServiceService {
 								+ " This is your mail: " + acount.getMail() +" : \n"
 								+ " This is your password: " + acount.getPassword()+" : \n"
 								+ " Please Click That Link To Active Your Account" +" : \n"
-								+ " http://localhost:8090/confirm-account/"+ tk.getConfirmation_token());
+								+ " http://localhost:8090/confirm-account/"+ tk.getConfirmation_token(),
+								"Created Suscess");
 
 				Service s = getById(id);
-				s.setStatus(true);
+				s.setStatus(1);
 				s.setCreatedAt(date.convetDatetoSql(dtf.format(now)));
 				s.setAccount(ac.getAccount(mail));
 				s.setViewer(0);
@@ -199,7 +200,7 @@ public class ServiceServiceImpl implements ServiceService {
 			this.mail.mailContent(ac, "Registation falied ! \n"
 					+ "Please Check Your Service Information And Re-register ! \n"
 					+ "Contact with Us: \n"
-					+ "http://localhost:8090/contact");
+					+ "http://localhost:8090/contact","Registation");
 			return 1;
 		} catch (Exception e) {
 			return -1;	// TODO: handle exception
@@ -208,9 +209,75 @@ public class ServiceServiceImpl implements ServiceService {
 	}
 
 	@Override
-	public List<Service> findAllByMail(String mail,boolean status) {
+	public List<Service> findAllByMail(String mail,int status) {
 		// TODO Auto-generated method stub
 		return servicerepo.findAllByMailAndStatus(mail, status);
+	}
+
+	@Override
+	public List<Service> findAllByStatusAndId(int status, long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.findAllByStatusAndId(status, id);
+	}
+
+	@Override
+	public String getTotalBook(long id) {
+		return servicerepo.getTotalBook(id);
+		
+	}
+
+	@Override
+	public String getTotalAmount(long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.getTotalAmount(id);
+	}
+
+	@Override
+	public int getToltalService(long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.getToltalService(id);
+	}
+
+	@Override
+	public String getAVGFee(long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.getAVGFee(id);
+	}
+
+	@Override
+	public Service getService(long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.getService(id);
+	}
+	public boolean getStatusOffService(long id)
+	{
+		Service s = getService(id);
+		if(s!=null)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}	
+	}
+
+	@Override
+	public List<Service> findAllServiceAceptandActive() {
+		// TODO Auto-generated method stub
+		return servicerepo.findAllServiceAceptandActive();
+	}
+
+	@Override
+	public List<Service> findAllServiceAceptandActive(long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.findAllServiceAceptandActive(id);
+	}
+
+	@Override
+	public String countRegisterForm(Date date) {
+		// TODO Auto-generated method stub
+		return servicerepo.countRegisterForm(date);
 	}
 }
 

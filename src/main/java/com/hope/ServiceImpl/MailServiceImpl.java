@@ -14,11 +14,11 @@ public class MailServiceImpl implements MailService  {
 	@Autowired
 	private JavaMailSender mail;
 	@Override
-	public void mailContent(Account ac,String content)
+	public void mailContent(Account ac,String content,String subject)
 	{
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setTo(ac.getMail());
-        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setSubject(subject);
         mailMessage.setFrom("zockkidpro@gmail.com");
         mailMessage.setText(content);
         sendConfirm(mailMessage);

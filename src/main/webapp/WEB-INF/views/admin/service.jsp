@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <c:url value="/resources" var="cssroot" />
-<c:url var="firstUrl" value="/admin/registerform?date=${currentdate}&pageNumber=1" />
-<c:url var="lastUrl" value="/admin/registerform?date=${currentdate}&pageNumber=${totalPages}" />
-<c:url var="prevUrl" value="/admin/registerform?date=${currentdate}&pageNumber=${currentPageNumber - 1}" />
-<c:url var="nextUrl" value="/admin/registerform?date=${currentdate}&pageNumber=${currentPageNumber + 1}" /> 
+<c:url var="firstUrl" value="/admin/service/register?date=${currentdate}&pageNumber=1" />
+<c:url var="lastUrl" value="/admin/service/register?date=${currentdate}&pageNumber=${totalPages}" />
+<c:url var="prevUrl" value="/admin/service/register?date=${currentdate}&pageNumber=${currentPageNumber - 1}" />
+<c:url var="nextUrl" value="/admin/service/register?date=${currentdate}&pageNumber=${currentPageNumber + 1}" /> 
 <div class="row">
 
 	<div class="content-header">
@@ -32,7 +32,7 @@
 					
 					<div class="col-sm-9">
 						<div class="col-sm-6">
-							<h3 >Registation</h3>
+							<h3 class="card-title" >Registation</h3>
 						</div>
 						
 					</div>
@@ -84,7 +84,7 @@
 						<c:forEach var="x" items="${listService}">
 
 							
-								<form action="/admin/registerform" method="POST">
+								<form action="/admin/service/register" method="POST">
 
 									<div class="card">
 										<div class="card-body">
@@ -167,7 +167,7 @@
 				            </c:otherwise>
 				        </c:choose>
 				        <c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
-				            <c:url var="pageUrl" value="/admin/registerform?date=${currentdate}&pageNumber=${i}" />
+				            <c:url var="pageUrl" value="/admin/service/register?date=${currentdate}&pageNumber=${i}" />
 				            <c:choose>
 				                <c:when test="${i == currentPageNumber}">
 				                    <li class="page-item active"><a class="page-link" href="${pageUrl}"><c:out value="${i}" /></a></li>
@@ -207,7 +207,7 @@
 <script>
 	$("#date").change(function () {
 		var xDate = $("#date").val();
-		var url = "http://localhost:8090/admin/registerform?date=" + xDate + "&pageNumber=1";
+		var url = "http://localhost:8090/admin/service/register?date=" + xDate + "&pageNumber=1";
 		window.location.href = url;
 
 	});
