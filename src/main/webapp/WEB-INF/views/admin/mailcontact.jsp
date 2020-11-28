@@ -7,7 +7,7 @@
   <div class="card card-primary card-outline">
     <div class="card-header">
      <div class="row">
-      <h3 class="card-title">Compose New Message</h3>
+      <h3 class="card-title">Soạn tin nhắn mới</h3>
      </div>
      <div class="row">
       <p class="card-title" >${message}</p>
@@ -39,9 +39,9 @@
     <!-- /.card-body -->
     <div class="card-footer">
       <div class="float-right">
-        <button type="submit" class="btn btn-primary" name="action" value="send" >   <i class="far fa-envelope"></i> Send</button>
+        <button type="submit" class="btn btn-primary" name="action" value="send" >   <i class="far fa-envelope"></i> Gửi</button>
       </div>
-      <button type="submit" id="discard" class="btn btn-default" name="action" value="cancle" > <i class="fas fa-times"></i> Discard</button>
+      <button type="submit" id="discard" class="btn btn-default" name="action" value="cancle" > <i class="fas fa-times"></i> Hủy</button>
     </div>
     <!-- /.card-footer -->
   </div>

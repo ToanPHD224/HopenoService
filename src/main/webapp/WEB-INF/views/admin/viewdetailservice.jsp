@@ -1,5 +1,6 @@
    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources" var="cssroot" />
     <div class="row">
     </div>
@@ -12,7 +13,7 @@
                   <div class="card-header  font-weight-bold ">
                    <div class="row">
                      <div class="col-sm-3">
-                      Infomation 
+                      Thông tin 
                      </div>
                      <div class="col-sm-9">
                           <form action="/admin/service/action" class="form-group" method="POST">
@@ -50,7 +51,7 @@
                                  <div class="row mt-2">
                                  
                                   <div class="col-sm-12">
-                                      <p><i class="fas fa-home"></i> Address : ${service.address}  </p>
+                                      <p><i class="fas fa-home"></i> Địa chỉ : ${service.address}  </p>
                                      
                                      
       
@@ -62,7 +63,7 @@
                                  <div class="row">
                                  
                                   <div class="col-sm-6">
-                                      <p>  <i class="fas fa-snowflake"></i> Ward : ${service.ward.name}  </p>
+                                      <p>  <i class="fas fa-snowflake"></i> Tên phường : ${service.ward.name}  </p>
                                      
                                      
       
@@ -70,7 +71,7 @@
                                   <div class="col-sm-6">
                                      
                                     
-                                      <p><i class="fas fa-snowflake"></i> Districs : ${service.ward.districs.name}  </p>
+                                      <p><i class="fas fa-snowflake"></i> Tên Quận : ${service.ward.districs.name}  </p>
                                      
       
                                   </div>
@@ -79,18 +80,18 @@
                                  <hr>
                                  <div class="row">
                                      <div class="col-sm-12">
-                                      <h5 class="font-weight-bold font-italic"><i class="fas fa-soap "></i> Service Name : ${service.name}</h5>
+                                      <h5 class="font-weight-bold font-italic"><i class="fas fa-soap "></i>  Tên dịch vụ: ${service.name}</h5>
                                      </div>
                                      <hr>
                                   <div class="col-sm-12">
       
-                                  <p class="font-weight-bold p-2"><i class="fas fa-street-view" style="color: green;"></i> Viewer: ${service.viewer}</p>
+                                  <p class="font-weight-bold p-2"><i class="fas fa-street-view" style="color: green;"></i> Số người xem: ${service.viewer}</p>
       
                               </div>
       
                               <div class="col-sm-12">
                                   <p class="font-weight-bold p-2"><i  class="fas fa-allergies" style="color: blue"></i> 
-                                      Average Fee : ${avgFee}</p>
+                                      Phí trung bình : ${avgFee}</p>
                               </div>
                               <div class="col-sm-12">
                                   <p class="font-weight-bold p-2"><i class="fas fa-ban " style="color: red;"></i> 
@@ -120,7 +121,7 @@
                              <hr>
                              <div class="row">
                               <div class="col-sm-12">
-                                  <p class="font-italic"> Content:  ${service.content}</p>
+                                  <p class="font-italic"> Nội dung:  ${service.content}</p>
                               </div>
                               
       
@@ -151,11 +152,11 @@
                                               <b class="font-weight-bold"><i class="fas fa-mail-bulk " style="color: orange;"></i> Email: ${service.mail} </b>          
                                           </li>
                                           <li class="list-group-item">
-                                            <b class="font-weight-bold"><i class="fas fa-folder-plus" style="color: orange;"></i> Toltal Service: ${totalService} </b>
+                                            <b class="font-weight-bold"><i class="fas fa-folder-plus" style="color: orange;"></i> Tổng Service: ${totalService} </b>
                                           </li>
                                         </ul>
                               
-                                        <a href="/admin/contact?mail=${service.mail}" class="btn btn-primary btn-block"><b>Contact</b></a>
+                                        <a href="/admin/contact?mail=${service.mail}" class="btn btn-primary btn-block"><b>Liên lạc</b></a>
                                       </div>
                                       <!-- /.card-body -->
                                     </div>
@@ -163,7 +164,7 @@
                                    <div class="col-sm-6">
                                     <div class="card  " style="height: 96%;" >
                                       <div class="card-header font-weight-bold">
-                                      Additional Infomation
+                                      Thông tin Service
                                       </div>
                                       <!-- /.card-header -->
                                       <div class="card-body">
@@ -173,19 +174,19 @@
                                         
                                         <div class="col-sm-12">
                           
-                                            <p class="font-weight-bold"><i class="fas fa-cart-plus"></i> Book total:  ${totalbook} </p>
+                                            <p class="font-weight-bold"><i class="fas fa-cart-plus"></i> Tổng Book:  ${totalbook} </p>
                           
                                         </div>
                                         <div class="col-sm-12">
                           
-                                            <p class="font-weight-bold"><i class="fas fa-cart-plus" ></i> Amount total: ${totalAmout} VND</p>
+                                            <p class="font-weight-bold"><i class="fas fa-cart-plus" ></i> Tổng Phí: ${totalAmout} VND</p>
                           
                                         </div>
                                         <div class="col-sm-12"></div>
                                         <div class="col-sm-12 ">
                           
                                           <div class="row justify-content-center mt-5">
-                                            <h1 class="font-weight-bold">  Rating:  ${avgRate} <i style="color: yellow;" class="fas fa-star"></i> </h1> 
+                                            <h1 class="font-weight-bold">  Đánh giá:  ${avgRate} <i style="color: yellow;" class="fas fa-star"></i> </h1> 
                                           </div>
                         
                                       </div>
@@ -206,14 +207,14 @@
                               <div class="row">
                                 <div class="card w-100" >
                                   <div class="card-header">
-                                      <p class="font-weight-bold ">  Contact </p>
+                                      <p class="font-weight-bold ">  Phản Hồi </p>
                         
                         
                                   </div>
                                   <div class="card-body">
                                       <c:if test="${empty listfeedback}">
                                       
-                                        <p> No Feedback  </p>
+                                        <p> Không có phản hồi  </p>
                                       
                                        </c:if>
                                     <c:if test="${not empty listfeedback}">
@@ -228,7 +229,7 @@
                                         
                                             
                                          
-                                          <span class="description"> Time- ${x.createdAt }  </span>
+                                          <span class="description"> Thời gian - ${x.createdAt }  </span>
                                           
                                          
                                           

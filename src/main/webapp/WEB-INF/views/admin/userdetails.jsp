@@ -1,10 +1,10 @@
-
+<%@ page contentType="text/html; charset=UTF-8" %>
 <div class="row">
     <div class="card mt-3">
         <div class="card-header">
 
             <p class="card-title"> 
-                Details Users
+                Chi tiết người dùng
 
             </p>
         </div>
@@ -16,20 +16,20 @@
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="text-right">Users Profile</h6>
+                        <h6 class="text-right">Thông tin người dùng</h6>
                     </div>
                     <div class="row mt-2">
                         
-                        <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="Doe" placeholder="Doe"></div>
+                        <div class="col-md-12"><label class="labels">Họ và tên</label><input type="text" class="form-control" value="Doe" placeholder="Doe"></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Position on the field</label><input type="text" class="form-control" placeholder="" value="Striker"></div>
-                        <div class="col-md-12"><label class="labels">Favorite place</label><input type="text" class="form-control" placeholder="" value="Districs 1"></div>
-                        <div class="col-md-12"><label class="labels">Sports field type</label><input type="text" class="form-control" placeholder="" value="5"></div>
+                        <div class="col-md-12"><label class="labels">Vị trí sở trường</label><input type="text" class="form-control" placeholder="" value="Striker"></div>
+                        <div class="col-md-12"><label class="labels">Địa điểm hay chơi</label><input type="text" class="form-control" placeholder="" value="Districs 1"></div>
+                        <div class="col-md-12"><label class="labels">Loại dịch vụ ưa thích</label><input type="text" class="form-control" placeholder="" value="5"></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Address</label><input type="text" class="form-control" placeholder="" value="USA"></div>
-                        <div class="col-md-6"><label class="labels">Districs</label><input type="text" class="form-control" value="" placeholder=""></div>
+                        <div class="col-md-6"><label class="labels">Tên đường</label><input type="text" class="form-control" placeholder="" value="USA"></div>
+                        <div class="col-md-6"><label class="labels">Quận</label><input type="text" class="form-control" value="" placeholder=""></div>
                     </div>
                  
                 </div>

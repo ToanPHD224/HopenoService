@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources" var="cssroot" />
 <c:url var="firstUrl" value="/admin/servicetype/getall/1" />
 <c:url var="lastUrl" value="/admin/servicetype/getall/${totalPages}" />
@@ -24,7 +25,7 @@
 		<div class="card-header">
 			<div class="row">
 				<div class="col-sm-3">
-					<h1 class="card-title mt-2">Service Type</h1>
+					<h1 class="card-title mt-2">Loại Dịch Vụ</h1>
 				</div>
 				<div class="col-sm-9">
 					<button style="border: none;" id="add"
@@ -86,28 +87,27 @@
 
 												<hr>
 
-												<strong><i class="fas fa-pencil-alt mr-1"></i> Fee
-													booking</strong>
+												<strong><i class="fas fa-pencil-alt mr-1"></i> 
+													Phí đặt</strong>
 
 												<p class="text-muted">
-													<span class="tag tag-danger"> ${x.booking_Fee} % For
-														Onetime </span>
+													<span class="tag tag-danger"> ${x.booking_Fee} % cho 1 lần đặt </span>
 
 												</p>
 												<hr>
 
-												<strong><i class="fas fa-shield-alt"></i> Satus</strong>
+												<strong><i class="fas fa-shield-alt"></i> Tình Trạng</strong>
 
 												<p class="text-muted">
 													<span class="tag tag-danger"> <c:choose>
 															<c:when test="${x.status == true}">
                                        		
-                                       			Active
+                                       			Hoạt Động
                                        		
                                        	</c:when>
 															<c:when test="${x.status == false}">
                                        		
-                                       			Disabled
+                                       			Tạm ngưng
                                        		
                                        	</c:when>
 
@@ -165,28 +165,26 @@
 
 												<hr>
 
-												<strong><i class="fas fa-pencil-alt mr-1"></i> Fee
-													booking</strong>
+												<strong><i class="fas fa-pencil-alt mr-1"></i> Phí đặt  </strong>
 
 												<p class="text-muted">
-													<span class="tag tag-danger"> ${x.booking_Fee} % For
-														Onetime </span>
+													<span class="tag tag-danger"> ${x.booking_Fee} % cho 1 lần đặt </span>
 
 												</p>
 												<hr>
 
-												<strong><i class="fas fa-shield-alt"></i> Satus</strong>
+												<strong><i class="fas fa-shield-alt"></i> Tình Trạng</strong>
 
 												<p class="text-muted">
 													<span class="tag tag-danger"> <c:choose>
 															<c:when test="${x.status == true}">
                                        		
-                                       			Active
+                                       			Hoạt Động
                                        		
                                        	</c:when>
 															<c:when test="${x.status == false}">
                                        		
-                                       			Disabled
+                                       			Tạm Ngưng
                                        		
                                        	</c:when>
 
@@ -249,28 +247,26 @@
 
 												<hr>
 
-												<strong><i class="fas fa-pencil-alt mr-1"></i> Fee
-													booking</strong>
+												<strong><i class="fas fa-pencil-alt mr-1"></i> Phí book </strong>
 
 												<p class="text-muted">
-													<span class="tag tag-danger"> ${x.booking_Fee} % For
-														Onetime </span>
+													<span class="tag tag-danger"> ${x.booking_Fee} % cho 1 lần đặt </span>
 
 												</p>
 												<hr>
 
-												<strong><i class="fas fa-shield-alt"></i> Satus</strong>
+												<strong><i class="fas fa-shield-alt"></i> Tình Trạng</strong>
 
 												<p class="text-muted">
 													<span class="tag tag-danger"> <c:choose>
 															<c:when test="${x.status == true}">
                                        		
-                                       			Active
+                                       			Hoạt Động
                                        		
                                        	</c:when>
 															<c:when test="${x.status == false}">
                                        		
-                                       			Disabled
+                                       			Tạm Ngưng
                                        		
                                        	</c:when>
 

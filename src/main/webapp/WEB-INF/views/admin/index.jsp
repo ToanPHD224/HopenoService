@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c-rt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources/admin" var="cssroot" />
  
 
@@ -14,7 +15,7 @@
         <div class="row mt-3">
        		<div class="card" style="width: 100%">
        			<div class="card-header">
-       				<p class="card-title"> Dashboard </p>
+       				<p class="card-title"> Trang chủ </p>
        			</div>
        			<div class="card-body" >
        				<div class="row">
@@ -113,7 +114,7 @@
     	
     Highcharts.chart('chart1', {
         title: {
-            text: 'Booking Statistics',
+            text: 'Thống kê số lượt book trong năm',
         },
         xAxis: {
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',

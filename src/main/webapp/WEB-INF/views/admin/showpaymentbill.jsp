@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources" var="cssroot" />
 <div class="row">
     <div class="col-sm-12">
         <div class="card mt-3">
             <div class="card-header">
-                <h3 class="card-title">Service Payment</h3>
+                <h3 class="card-title">Thanh Toán</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -13,7 +14,7 @@
                     <div class="row">
                         
                         <div class="col-sm-12 col-md-8">
-                         <div class="row"> <a href="/admin/service/payment/sendpayment" class="btn"><i class="fas fa-bell"></i> SendBill </a> </div>
+                         <div class="row"> <a href="/admin/service/payment/sendpayment" class="btn"><i class="fas fa-bell"></i> Gửi hóa đơn </a> </div>
                           <div class="row">
                      		<div class="col-sm-12">
                      			<p class="ml-3"> ${message} </p>
@@ -58,25 +59,25 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1"
                                             aria-label="Rendering engine: activate to sort column descending"
-                                            aria-sort="ascending">Service Name</th>
+                                            aria-sort="ascending">Tên Dịch Vụ</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                            colspan="1" aria-label="Browser: activate to sort column ascending">Service Type
+                                            colspan="1" aria-label="Browser: activate to sort column ascending">Tên dịch vụ
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                            Total Book</th>
+                                            Tổng lượt đặt</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="Engine version: activate to sort column ascending">
-                                            TotalPay</th>
+                                            Tổng tiền nhận</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Total Fee</th>
+                                            Tổng tiền phải trả</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Payment Send At</th>
+                                            Ngày gửi</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                            Status</th>
+                                            Tình Trạng</th>
                                             <th></th>
                                     </tr>
                                 </thead>
@@ -89,7 +90,17 @@
                                         <td>${x.totalPay}</td>
                                         <td>${x.totalFee}</td>
                                         <td>${x.paymentDate}</td>
-                                        <td>${x.status}</td>
+                                        <td>
+                                        	<c:if test="${x.status == true  }">
+                                        		Đã Thanh Toán
+                                        	
+                                        	</c:if>
+                                        	<c:if test="${x.status == false ">
+                                        	
+                                        		Chưa Thanh toán
+                                        	</c:if>
+                                        
+                                        </td>
                                         <td>
                                             <button class="btn"><i class="fas fa-bell"></i></button>
                                         </td>
@@ -98,13 +109,13 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th rowspan="1" colspan="1">Service Name</th>
-                                        <th rowspan="1" colspan="1">Service Type</th>
-                                        <th rowspan="1" colspan="1">Total Book</th>
-                                        <th rowspan="1" colspan="1">Toltal Pay</th>
-                                        <th rowspan="1" colspan="1">Total Fee</th>
-                                        <th rowspan="1" colspan="1">Payment Send At</th>
-                                        <th rowspan="1" colspan="1">Status</th>
+                                        <th rowspan="1" colspan="1">Tên Dịch Vụ</th>
+                                        <th rowspan="1" colspan="1">Tên dịch vụ</th>
+                                        <th rowspan="1" colspan="1">Tổng lượt đặt</th>
+                                        <th rowspan="1" colspan="1">Tổng tiền nhận</th>
+                                        <th rowspan="1" colspan="1">Tổng tiền phải trả</th>
+                                        <th rowspan="1" colspan="1">Ngày gửi</th>
+                                        <th rowspan="1" colspan="1">Tình Trạng</th>
                                         <th rowspan="1" colspan="1"></th>
                                     </tr>
                                 </tfoot>

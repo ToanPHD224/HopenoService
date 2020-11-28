@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources" var="cssroot" />
 <c:url var="firstUrl" value="/admin/feedback/getall?date=${currentdate}&pageNumber=1" />
 <c:url var="lastUrl" value="/admin/feedback/getall?date=${currentdate}&pageNumber=${totalPages}" />
@@ -8,7 +9,7 @@
    <div class="col-sm-12">
     <div class="card card-primary card-outline mt-3">
         <div class="card-header">
-          <h3 class="card-title">Feedback</h3>
+          <h3 class="card-title">Phản Hồi</h3>
 
           <div class="card-tools">
             <div class="input-group input-group-sm">
@@ -76,9 +77,9 @@
               <thead>
                 <th></th>
                 <th>Email</th>
-                <th>Content</th>
-                <th>Rating</th>
-                <th>Service</th>
+                <th>Nội Dung</th>
+                <th>Đánh Giá</th>
+                <th>Tên Dịch Vụ</th>
                
               </thead>
               <tbody>

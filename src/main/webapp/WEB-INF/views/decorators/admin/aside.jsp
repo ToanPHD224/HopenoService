@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/views/common/jstl.jsp"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources/admin" var="cssroot" />
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -29,7 +30,7 @@
             <a href="/admin/" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Home Page
+               Trang chủ
              
               </p>
             </a>
@@ -39,7 +40,7 @@
             <a href="#" class="nav-link">
            <i class="fas fa-concierge-bell"></i>
               <p>
-              &ensp;Service
+              &ensp;Dịch Vụ
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -47,20 +48,20 @@
               <li class="nav-item">
                 <a href="/admin/service/getall" class="nav-link">
                 &ensp;<i class="fas fa-eye"></i>
-                  <p>&ensp;View All Service</p>
+                  <p>&ensp;Dịch Vụ</p>
                 </a>
               </li>
                 <li class="nav-item">
                 <a href="/admin/service/register" class="nav-link">
                 &ensp; <i class="fas fa-registered"></i>
-                  <p>&ensp;Register Service</p>
+                  <p>&ensp;Phiếu Đăng Kí</p>
                 </a>
               </li>
               <li class="nav-item has-treeview">
                 <a href="/admin/service/payment/getbill" class="nav-link">
                  &ensp;<i class="fab fa-paypal"></i>
                   <p>
-                    &ensp;  Payment
+                    &ensp;  Thanh Toán
                    
                   </p>
                 </a>
@@ -73,7 +74,7 @@
             <a href="#" class="nav-link">
        	 	<i class="fas fa-credit-card"></i>
               <p>
-              &ensp;Service Type
+              &ensp;Thể Loại Dịch Vụ
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -81,13 +82,13 @@
               <li class="nav-item">
                 <a href="/admin/servicetype/getall/1" class="nav-link">
                  &ensp;<i class="fas fa-eye"></i>
-                  <p>&ensp;View All ServiceType</p>
+                  <p>&ensp;Thể Loại Dịch Vụ</p>
                 </a>
               </li>
                 <li class="nav-item">
                 <a href="/admin/servicetype/add" class="nav-link">
               &ensp; <i class="fas fa-plus-circle"></i>
-                  <p>&ensp;Add Service Type</p>
+                  <p>&ensp;Thêm Thể Loại Dịch Vụ</p>
                 </a>
               </li>
             </ul>
@@ -95,19 +96,19 @@
           	 <li class="nav-item">
             <a href="/admin/users/getall" class="nav-link">
           <i class="fas fa-address-book"></i>
-              <p>&ensp;Users</p>
+              <p>&ensp;Người dùng</p>
             </a>
           </li>
               <li class="nav-item">
             <a href="/admin/feedback/getall" class="nav-link">
             <i class="fas fa-comments"></i>
-              <p>&ensp;FeedBack</p>
+              <p>&ensp;Phản Hồi</p>
             </a>
           </li>
            <li class="nav-item">
             <a href="/admin/contact" class="nav-link">
            <i class="far fa-id-card"></i>
-              <p>&ensp;Contact</p>
+              <p>&ensp;Liên Lạc</p>
             </a>
           </li>
         </ul>

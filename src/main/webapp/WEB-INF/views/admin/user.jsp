@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources" var="cssroot" />
 <c:url var="firstUrl" value="/admin/users/getall/1" />
 <c:url var="lastUrl" value="/admin//users/getall?pageNumber=${totalPages}" />
@@ -47,7 +48,7 @@
 
 							<div>
 
-								<p class="card-title "> Not Founded ! </p>
+								<p class="card-title "> Không tìm thấy ! </p>
 
 							</div>
 
@@ -82,12 +83,12 @@
             <div class="card-body pt-0">
               <div class="row">
                 <div class="col-7">
-                  <h2 class="lead"><b>Name : ${x.name}</b></h2>
+                  <h2 class="lead"><b>Tên : ${x.name}</b></h2>
                   <p class="text-muted text-sm"><b>Email: </b> <p> ${x.mail} </p>
                   <ul class="ml-4 mb-0 fa-ul text-muted">
-                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: ${x.address} </li>
-                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: ${x.phone}</li>
-                    <li class="small"><span class="fa-li"><i class="fas fa-battery-full"></i></span> Status #: ${x.status}</li>
+                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Tên đường: ${x.address} </li>
+                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> SDT #: ${x.phone}</li>
+                    <li class="small"><span class="fa-li"><i class="fas fa-battery-full"></i></span> Tình Trạng #: ${x.status}</li>
                     <li class="small"><span class="fa-li"><i class="fas fa-user-slash"></i></span> Banned #: ${x.banned}</li>
                   </ul>
                 </div>
@@ -114,7 +115,7 @@
                 	</c:when>
                 </c:choose>
                   <a href="#" class="btn  btn-sm btn-success">
-                  <i class="fas fa-info-circle"></i> View Detail
+                  <i class="fas fa-info-circle"></i> Xem Chi Tiết
                 </a>
               </div>
             </div>

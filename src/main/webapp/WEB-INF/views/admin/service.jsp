@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/resources" var="cssroot" />
 <c:url var="firstUrl" value="/admin/service/register?date=${currentdate}&pageNumber=1" />
 <c:url var="lastUrl" value="/admin/service/register?date=${currentdate}&pageNumber=${totalPages}" />
@@ -32,7 +33,7 @@
 					
 					<div class="col-sm-9">
 						<div class="col-sm-6">
-							<h3 class="card-title" >Registation</h3>
+							<h3 class="card-title" >Đơn đăng kí</h3>
 						</div>
 						
 					</div>
@@ -69,7 +70,7 @@
 
 							<div>
 
-								<p class="card-title "> Not bill on today </p>
+								<p class="card-title "> Hôm nay không có đơn đăng kí </p>
 
 							</div>
 
@@ -101,22 +102,22 @@
 															value="${x.mail}">
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Address</label>
+														<label for="exampleInputEmail1">Tên đường</label>
 														<input type="text" class="form-control" name="address"
 															value="${x.address}">
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Name</label>
+														<label for="exampleInputEmail1">Tên</label>
 														<input type="text" class="form-control" name="name"
 															value="${x.name}">
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Districs</label>
+														<label for="exampleInputEmail1">Quận</label>
 														<input type="text"  value="${x.ward.districs.name}"
 															class="form-control mb-2" />
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Ward</label>
+														<label for="exampleInputEmail1">Phường</label>
 														<input type="text" value="${x.ward.name}"
 															class="form-control mb-2" />
 															<input type="hidden" value="${currentdate}" name="currentdate">
@@ -131,10 +132,10 @@
 											<div class="">
 												<button style="border: 0.5px solid black;"  value=decline name="action" type="submit"
 													class="btn btn-light float-right  ">
-													Decline</i>
+													Từ Chối</i>
 												</button>
 												<button style="border: 0.5px solid black;"  value="accept" name="action" type="submit"
-													class="btn btn-light float-right mr-1 ">Accept</button>
+													class="btn btn-light float-right mr-1 ">Chấp Nhận</button>
 
 
 
