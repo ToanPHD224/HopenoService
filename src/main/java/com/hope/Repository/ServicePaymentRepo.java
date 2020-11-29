@@ -19,7 +19,7 @@ public interface ServicePaymentRepo extends JpaRepository<ServicePayment, Long> 
 	public String countFee(@Param("start_date") Date start_date , @Param("end_date") Date endDate);
 	@Query(value = "select max(service_payment.payment_date) from service_payment",nativeQuery = true)
 	public Date nearestPaymentDate();
-	@Query(value = "select * from service_payment where service_payment.payment_date between :start_date and :end_date and status=0",nativeQuery = true)
+	@Query(value = "select * from service_payment where service_payment.payment_date between :start_date and :end_date and status=0 and total_fee>0",nativeQuery = true)
 	public List<ServicePayment> listServicePayment(@Param("start_date") Date start_date , @Param("end_date") Date end_date);
 	
 }

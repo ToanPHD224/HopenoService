@@ -91,14 +91,18 @@
                                         <td>${x.totalFee}</td>
                                         <td>${x.paymentDate}</td>
                                         <td>
-                                        	<c:if test="${x.status == true  }">
-                                        		Đã Thanh Toán
+                                        <c:choose>
+                                        	<c:when test="${x.status == true}">
+                                        	Đã Thanh Toán
+                                        	</c:when>
                                         	
-                                        	</c:if>
-                                        	<c:if test="${x.status == false ">
+                                        	<c:when test="${x.status == false}">
+                                        	Chưa Thanh toán
+                                        		
+                                        	</c:when>
+                                        </c:choose>
                                         	
-                                        		Chưa Thanh toán
-                                        	</c:if>
+                                        
                                         
                                         </td>
                                         <td>

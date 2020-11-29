@@ -96,9 +96,8 @@ public class ServicePaymentServiceImpl implements ServicePaymentService {
 				totalBook = p.size();
 				for (int j = 0; j < p.size(); j++) {
 					totalPay += p.get(j).getAmount();
-					float duration = p.get(j).get_end() - p.get(j).get_start();
 					float feeBookOneTime = (feeBook / 100) * p.get(j).getAmount();
-					totalFee += feeBookOneTime * duration;
+					totalFee += feeBookOneTime;
 				}
 				ServicePayment s = new ServicePayment(totalBook, listService.get(i),
 						listService.get(i).getServicefee().getName(), totalPay, totalFee, dateHelper.convetDatetoSql(currentdate.toString()), false);
