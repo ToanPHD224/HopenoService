@@ -56,4 +56,10 @@ public class SportFieldServiceImpl implements SportFieldService{
         SportField sp = list.get(rand.nextInt(list.size()));
 		return sp; 
 	}
+
+	@Override
+	public Integer countToltalSportFiledById(long id) {
+		// TODO Auto-generated method stub
+		return spfr.countToltalSportFiledById(id);
+	}
 }

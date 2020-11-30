@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Hopeno - Tìm sân thể thao nhanh chóng</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+      <meta name="title" content="Hopeno - Tìm sân thể thao nhanh chóng">
+      <meta name="author" content="Hopeno">
+      <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png">
+      <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
+      <link rel="mask-icon" href="./assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="theme-color" content="#ffffff">
+      <link type="text/css" href="./vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <link type="text/css" href="./vendor/leaflet/dist/leaflet.css" rel="stylesheet">
+      <link rel="stylesheet" href="./vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+      <link rel="stylesheet" href="./vendor/jqvmap/dist/jqvmap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.16/jquery.timepicker.min.css">
+      <link type="text/css" href="./css/spaces.css" rel="stylesheet">
+   </head>
+   <body>
+      <header class="header-global">
+         <nav id="navbar-main" class="navbar navbar-main navbar-theme-primary navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-transparent navbar-theme-primary">
+            <div class="container">
+               <a class="navbar-brand @@logo_classes" href="./index.html">
+                <img class="navbar-brand-dark common" src="./assets/img/brand/light.svg" height="35" alt="Logo light">
+                <img class="navbar-brand-light common" src="./assets/img/brand/dark.svg" height="35" alt="Logo dark">
+                </a>
+               <div class="d-none d-lg-block @@cta_button_classes">
+                <a href="#" target="_blank" class="btn btn-md btn-outline-white animate-up-2 mr-3">
+                  <i class="fas fa-book mr-1"></i>
+                  <span class="d-none d-xl-inline">Dành cho chủ sân</span>
+                </a>
+                <a href="#" target="_blank" class="btn btn-md btn-secondary animate-up-2">
+                  <i class="fas fa-shopping-bag mr-2"></i> Đăng nhập</a></div>
+               <div class="d-flex d-lg-none align-items-center"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button></div>
+            </div>
+         </nav>
+      </header>
+      <main>
+         <div class="section section-header section-image bg-tertiary overlay-primary text-white overflow-hidden pb-9" data-background="../assets/img/new-york-hero.jpg">
+            <div class="container z-2">
+               <div class="row justify-content-center pt-3">
+                  <div class="col-12 text-center">
+                     <h3 class="mb-5">Tìm kiếm sân thể thao ở <span class="font-weight-bolder">TP HCM</span></h3>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="section section-md pt-0">
+            <div class="container mt-n7">
+               <div class="row">
+                  <div class="col-12">
+                     <div class="card border-light p-md-2">
+                        <div class="card-body p-4">
+                           <form autocomplete="off" method="get" action="#">
+                              <div class="row">
+                                 <div class="col-12">
+                                    <div class="row">
+                                       <div class="col">
+                                          <div class="form-group form-group-lg mb-lg-0">
+                                             <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"><span class="fas fa-map-marker-alt"></span></span></div>
+                                                <input id="search-location" type="text" class="form-control autocomplete" placeholder="Quận hoặc tên sân" tabindex="1" required>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col">
+                                          <div class="form-group form-group-lg mb-0">
+                                             <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar-alt"></i></span></div>
+                                                <input class="form-control datepicker" placeholder="Chọn ngày" type="text" required>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col">
+                                            <div class="form-group form-group-lg mb-0">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-clock"></i></span></div>
+                                                <input class="form-control timepicker" min="00:00" max="23:30" placeholder="Chọn giờ" type="time" required>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row mt-4">
+                                <div class="col-6 col-lg-6 mb-3 mb-lg-0"><button class="btn btn-primary btn-block animate-up-2" type="submit">Find a desk</button></div>
+                                <div class="col-6 col-lg-6 mb-3 mb-lg-0"><button class="btn btn-outline-gray btn-block animate-up-2" type="reset">Reset</button></div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="section section-lg pt-0">
+            <div class="container">
+               <div class="row">
+                  <div class="col-12 mb-5">
+                     <div class="justify-content-between align-items-center d-none d-md-flex">
+                        <div class="mr-3">
+                           <h2 class="h6 mb-3 mb-md-0">Total Properties Found: <span class="font-weiht-bolder text-primary">207</span></h2>
+                        </div>
+                        <div class="nav-wrapper position-relative p-0">
+                           <ul class="nav nav-pills small-pills" id="tab-34" role="tablist">
+                              <li class="nav-item pr-0"><a class="nav-link text-sm-center border-0 active" id="tab-link-example-14" data-toggle="tab" href="#link-example-14" role="tab" aria-controls="link-example-14" aria-selected="false"><span class="nav-link-icon d-block"><span class="fas fa-th-large"></span></span></a></li>
+                              <li class="nav-item pr-0"><a class="nav-link text-sm-center border-0" id="tab-link-example-13" data-toggle="tab" href="#link-example-13" role="tab" aria-controls="link-example-13" aria-selected="true"><span class="nav-link-icon d-block"><span class="fas fa-th-list"></span></span></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="tab-content mt-4 mt-lg-4" id="tabcontentexample-5">
+                        <div class="tab-pane fade" id="link-example-13" role="tabpanel" aria-labelledby="tab-link-example-13">
+                           <div class="row justify-content-center">
+                              <div class="col-12 col-sm-10 col-md-6 col-lg-12">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <div class="row no-gutters align-items-center">
+                                       <div class="col-12 col-lg-6 col-xl-5"><a href="./single-space.html"><img src="../assets/img/private-office.jpg" alt="private office" class="card-img p-2 rounded-xl"></a></div>
+                                       <div class="col-12 col-lg-6 col-xl-7">
+                                          <div class="card-body">
+                                             <a href="./single-space.html">
+                                                <h4 class="h5">Collaborative Workspace</h4>
+                                             </a>
+                                             <div class="d-flex my-4"><span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="badge badge-pill badge-primary ml-2">5.0</span></div>
+                                             <ul class="list-group mb-3">
+                                                <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>New York, Manhattan, USA</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Old Street (2 mins walk)</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Shoreditch High Street (10 mins walk)</li>
+                                             </ul>
+                                             <div class="d-flex justify-content-between">
+                                                <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">500$</span></div>
+                                                <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">12</span></div>
+                                                <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">1200</span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-sm-10 col-md-6 col-lg-12 mb-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <div class="row no-gutters align-items-center">
+                                       <div class="col-12 col-lg-6 col-xl-5"><a href="./single-space.html"><img src="../assets/img/meeting-office.jpg" alt="meeting office" class="card-img p-2 rounded-xl"></a></div>
+                                       <div class="col-12 col-lg-6 col-xl-7">
+                                          <div class="card-body">
+                                             <a href="./single-space.html">
+                                                <h4 class="h5">Meeting Office Space</h4>
+                                             </a>
+                                             <div class="d-flex my-4"><span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-light"></span> <span class="badge badge-pill badge-primary ml-2">4.0</span></div>
+                                             <ul class="list-group mb-3">
+                                                <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>New York, Manhattan, USA</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Old Street (2 mins walk)</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Shoreditch High Street (10 mins walk)</li>
+                                             </ul>
+                                             <div class="d-flex justify-content-between">
+                                                <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">50$</span></div>
+                                                <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">2-4</span></div>
+                                                <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">400</span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-sm-10 col-md-6 col-lg-12 mb-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <div class="row no-gutters align-items-center">
+                                       <div class="col-12 col-lg-6 col-xl-5"><a href="./single-space.html"><img src="../assets/img/conference-office.jpg" alt="conference office" class="card-img p-2 rounded-xl"></a></div>
+                                       <div class="col-12 col-lg-6 col-xl-7">
+                                          <div class="card-body">
+                                             <a href="./single-space.html">
+                                                <h4 class="h5">Conference Room</h4>
+                                             </a>
+                                             <div class="d-flex my-4"><span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="star fas fa-star text-warning"></span> <span class="fas fa-star-half text-warning"></span> <span class="badge badge-pill badge-primary ml-2">4.7</span></div>
+                                             <ul class="list-group mb-3">
+                                                <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>Paris, Île-de-France, France</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>LE BHV MARAIS (5 mins walk)</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Shakespeare & Company (15 mins walk)</li>
+                                             </ul>
+                                             <div class="d-flex justify-content-between">
+                                                <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">150$</span></div>
+                                                <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">2-10</span></div>
+                                                <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">200</span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-sm-10 col-md-6 col-lg-12 mb-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <div class="row no-gutters align-items-center">
+                                       <div class="col-12 col-lg-6 col-xl-5"><a href="./single-space.html"><img src="../assets/img/lifestyle-office.jpg" alt="lifestyle office" class="card-img p-2 rounded-xl"></a></div>
+                                       <div class="col-12 col-lg-6 col-xl-7">
+                                          <div class="card-body">
+                                             <a href="./single-space.html">
+                                                <h4 class="h5">Lifestyle Space</h4>
+                                             </a>
+                                             <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <span class="badge badge-pill badge-primary ml-2">4.7</span></div>
+                                             <ul class="list-group mb-3">
+                                                <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>Madrid, Hortaleza, Spain</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Plaza Mayor (2 mins walk)</li>
+                                                <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>eal Casa de Correos (15 mins walk)</li>
+                                             </ul>
+                                             <div class="d-flex justify-content-between">
+                                                <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">200$</span></div>
+                                                <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">10-30</span></div>
+                                                <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">500</span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="link-example-14" role="tabpanel" aria-labelledby="tab-link-example-14">
+                           <div class="row">
+                              <div class="col-12 col-md-6 col-lg-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <a href="./single-space.html" class="position-relative"><img src="../assets/img/image-office.jpg" class="card-img-top rounded-xl p-2" alt="themesberg office"></a>
+                                    <div class="card-body">
+                                       <a href="./single-space.html">
+                                          <h4 class="h5">Team Workspace</h4>
+                                       </a>
+                                       <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <span class="badge badge-pill badge-primary ml-2">5.0</span></div>
+                                       <ul class="list-group mb-3">
+                                          <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>California, USA</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Penny Market Street (15 mins walk)</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Museum Street (20 mins walk)</li>
+                                       </ul>
+                                    </div>
+                                    <div class="card-footer bg-soft border-top">
+                                       <div class="d-flex justify-content-between">
+                                          <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">300$</span></div>
+                                          <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">24</span></div>
+                                          <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">2000</span></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <a href="./single-space.html" class="position-relative"><img src="../assets/img/cowork-office.jpg" class="card-img-top rounded-xl p-2" alt="developer desk"></a>
+                                    <div class="card-body">
+                                       <a href="./single-space.html">
+                                          <h4 class="h5">Coworking Workspace</h4>
+                                       </a>
+                                       <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-light"></i> <i class="star fas fa-star text-light"></i> <span class="badge badge-pill badge-primary ml-2">3.0</span></div>
+                                       <ul class="list-group mb-3">
+                                          <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>California, USA</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Penny Market Street (15 mins walk)</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Museum Street (20 mins walk)</li>
+                                       </ul>
+                                    </div>
+                                    <div class="card-footer bg-soft border-top">
+                                       <div class="d-flex justify-content-between">
+                                          <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">300$</span></div>
+                                          <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">24</span></div>
+                                          <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">2000</span></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <a href="./single-space.html" class="position-relative"><img src="../assets/img/meeting-office.jpg" class="card-img-top rounded-xl p-2" alt="wood office"></a>
+                                    <div class="card-body">
+                                       <a href="./single-space.html">
+                                          <h4 class="h5">Meeting Office Space</h4>
+                                       </a>
+                                       <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-light"></i> <span class="badge badge-pill badge-primary ml-2">4.0</span></div>
+                                       <ul class="list-group mb-3">
+                                          <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>London, Canary Wharf, UK</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Stamford Bridge Stadium (5 mins walk)</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Bluebird Chelsea Restaurant (15 mins walk)</li>
+                                       </ul>
+                                    </div>
+                                    <div class="card-footer bg-soft border-top">
+                                       <div class="d-flex justify-content-between">
+                                          <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">50$</span></div>
+                                          <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">2-4</span></div>
+                                          <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">400</span></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <a href="./single-space.html" class="position-relative"><img src="../assets/img/conference-office.jpg" class="card-img-top rounded-xl p-2" alt="pixel room"></a>
+                                    <div class="card-body">
+                                       <a href="./single-space.html">
+                                          <h4 class="h5">Conference Room</h4>
+                                       </a>
+                                       <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="fas fa-star-half text-warning"></i> <span class="badge badge-pill badge-primary ml-2">4.7</span></div>
+                                       <ul class="list-group mb-3">
+                                          <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>Paris, Île-de-France, France</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>LE BHV MARAIS (5 mins walk)</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Shakespeare & Company (15 mins walk)</li>
+                                       </ul>
+                                    </div>
+                                    <div class="card-footer bg-soft border-top">
+                                       <div class="d-flex justify-content-between">
+                                          <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">150$</span></div>
+                                          <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">2-10</span></div>
+                                          <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">200</span></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <a href="./single-space.html" class="position-relative"><img src="../assets/img/lifestyle-office.jpg" class="card-img-top rounded-xl p-2" alt="modern desk"></a>
+                                    <div class="card-body">
+                                       <a href="./single-space.html">
+                                          <h4 class="h5">Lifestyle Space</h4>
+                                       </a>
+                                       <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <span class="badge badge-pill badge-primary ml-2">4.7</span></div>
+                                       <ul class="list-group mb-3">
+                                          <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>Madrid, Hortaleza, Spain</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Plaza Mayor (2 mins walk)</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>eal Casa de Correos (15 mins walk)</li>
+                                       </ul>
+                                    </div>
+                                    <div class="card-footer bg-soft border-top">
+                                       <div class="d-flex justify-content-between">
+                                          <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">200$</span></div>
+                                          <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">10-30</span></div>
+                                          <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">500</span></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-4">
+                                 <div class="card border-light mb-4 animate-up-5">
+                                    <a href="./single-space.html" class="position-relative"><img src="../assets/img/private-office.jpg" class="card-img-top rounded-xl p-2" alt="office modern"></a>
+                                    <div class="card-body">
+                                       <a href="./single-space.html">
+                                          <h4 class="h5">Private Space</h4>
+                                       </a>
+                                       <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <span class="badge badge-pill badge-primary ml-2">5.0</span></div>
+                                       <ul class="list-group mb-3">
+                                          <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>New York, Manhattan, USA</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Old Street (2 mins walk)</li>
+                                          <li class="list-group-item small p-0"><span class="fas fa-bullseye mr-2"></span>Shoreditch High Street (10 mins walk)</li>
+                                       </ul>
+                                    </div>
+                                    <div class="card-footer bg-soft border-top">
+                                       <div class="d-flex justify-content-between">
+                                          <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Monthly</span> <span class="h5 text-dark font-weight-bold">100$</span></div>
+                                          <div class="col"><span class="text-muted font-small d-block mb-2">People</span> <span class="h5 text-dark font-weight-bold">1</span></div>
+                                          <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span class="h5 text-dark font-weight-bold">10</span></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col mt-3 d-flex justify-content-center">
+                     <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                           <li class="page-item disabled"><a class="page-link" tabindex="-1" href="#">Previous</a></li>
+                           <li class="page-item"><a class="page-link" href="#">1</a></li>
+                           <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                           <li class="page-item"><a class="page-link" href="#">3</a></li>
+                           <li class="page-item"><a class="page-link" href="#">4</a></li>
+                           <li class="page-item"><a class="page-link" href="#">5</a></li>
+                           <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer pb-5 bg-primary text-white pt-3">
+        <div class="container">
+           <div class="row mt-6">
+              <div class="col-xl-3 mb-3 mb-xl-0">
+                 <img src="./assets/img/brand/light.svg" height="30" class="mb-3" alt="Spaces logo">
+                 <p>Tìm sân thể thao nhanh chóng!<br />Quản lý sân bãi thật dễ dàng</p>
+              </div>
+              <div class="col-6 col-xl-2 mb-5 mb-xl-0">
+                 <span class="h5">Hopeno Service</span>
+                 <ul class="footer-links mt-2">
+                    <li><a target="_blank" href="https://themesberg.com/blog">Trang chủ</a></li>
+                    <li><a target="_blank" href="https://themesberg.com/products">Products</a></li>
+                    <li><a target="_blank" href="https://themesberg.com/about">Về chúng tôi</a></li>
+                    <li><a target="_blank" href="https://themesberg.com/contact">Liên hệ</a></li>
+                 </ul>
+              </div>
+              <div class="col-6 col-xl-3 mb-5 mb-xl-0">
+                 
+              </div>
+              <div class="col-12 col-xl-4 mb-5 mb-xl-0">
+                 <span class="h5">Dành cho điện thoại</span>
+                 <p class="text-muted font-small mt-2">Chọn hệ điều hành tương ứng với bạn.</p>
+                 <button class="btn btn-sm btn-white mb-xl-0 mr-2 mr-lg-2"><span class="d-flex align-items-center"><span class="icon icon-brand mr-2"><span class="fab fa-apple"></span></span> <span class="d-inline-block text-left"><small class="font-weight-normal d-block">Available on</small> App Store</span></span></button> <button class="btn btn-sm btn-white"><span class="icon icon-brand mr-2"><span class="fab fa-google-play"></span></span> <span class="d-inline-block text-left"><small class="font-weight-normal d-block">Available on</small> Google Play</span></button>
+              </div>
+           </div>
+           <hr class="my-3 my-lg-5">
+           <div class="row">
+              <div class="col mb-md-0">
+                 <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center"><img src="./assets/img/themesberg.svg" height="25" class="mb-3" alt="Themesberg Logo"></a>
+                 <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                    <p class="font-weight-normal font-small mb-0">Copyright © Hopeno Service  <span class="current-year">2020</span>. All rights reserved.</p>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </footer>
+     <script src="./vendor/jquery/dist/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.16/jquery.timepicker.min.js"></script>
+     <script src="./vendor/popper.js/dist/umd/popper.min.js"></script>
+     <script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+     <script src="./vendor/headroom.js/dist/headroom.min.js"></script>
+     <script src="./vendor/onscreen/dist/on-screen.umd.min.js"></script>
+     <script src="./vendor/nouislider/distribute/nouislider.min.js"></script>
+     <script src="./vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+     <script src="./vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+     <script src="./vendor/owl.carousel/dist/owl.carousel.min.js"></script>
+     <script src="./vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+     <script src="./vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+     <script src="./vendor/sticky-sidebar/dist/sticky-sidebar.min.js"></script>
+     <script src="./vendor/leaflet/dist/leaflet.js"></script>
+     <script src="./vendor/chartist/dist/chartist.min.js"></script>
+     <script src="./vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+     <script src="./vendor/jqvmap/dist/jquery.vmap.min.js"></script>
+     <script src="./vendor/jqvmap/dist/maps/jquery.vmap.usa.js"></script>
+     <script src="./assets/js/jquery.slideform.js"></script>
+     <script src="./assets/js/spaces.js"></script>
+  </body>
+</html>

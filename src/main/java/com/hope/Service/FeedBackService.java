@@ -9,6 +9,6 @@ import com.hope.entities.FeedBack;
 
 public interface FeedBackService extends CrudEnties<FeedBack> {
 	public Page<FeedBack> findAllByTypeAndCreatedAt(int type,java.util.Date date,Pageable page);
-	public String getAVGRating(long id);
+	public Integer getAVGRating(long id);
 	public List<FeedBack> getTopFiveFeedBackByService(long id);
 }

@@ -130,7 +130,7 @@ public class ServiceServiceImpl implements ServiceService {
 	@Autowired
 	private MailService mail;
 	@Override
-	public int registationService(String mail, long id) {
+	public Integer registationService(String mail, long id) {
 		
 	
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -221,25 +221,25 @@ public class ServiceServiceImpl implements ServiceService {
 	}
 
 	@Override
-	public String getTotalBook(long id) {
+	public Integer getTotalBook(long id) {
 		return servicerepo.getTotalBook(id);
 		
 	}
 
 	@Override
-	public String getTotalAmount(long id) {
+	public Float getTotalAmount(long id) {
 		// TODO Auto-generated method stub
 		return servicerepo.getTotalAmount(id);
 	}
 
 	@Override
-	public int getToltalService(long id) {
+	public Integer getToltalService(long id) {
 		// TODO Auto-generated method stub
 		return servicerepo.getToltalService(id);
 	}
 
 	@Override
-	public String getAVGFee(long id) {
+	public Float getAVGFee(long id) {
 		// TODO Auto-generated method stub
 		return servicerepo.getAVGFee(id);
 	}
@@ -275,9 +275,21 @@ public class ServiceServiceImpl implements ServiceService {
 	}
 
 	@Override
-	public String countRegisterForm(Date date) {
+	public Integer countRegisterForm(Date date) {
 		// TODO Auto-generated method stub
 		return servicerepo.countRegisterForm(date);
+	}
+
+	@Override
+	public List<Service> getRandomService(long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.getRandomService(id);
+	}
+
+	@Override
+	public List<Service> getAllServiceByType(long id) {
+		// TODO Auto-generated method stub
+		return servicerepo.getAllServiceByType(id);
 	}
 }
 

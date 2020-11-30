@@ -1,21 +1,22 @@
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>My First Bootstrap 4 Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
-</div>
+<%@ include file="/WEB-INF/views/common/jstl.jsp"%>
+<c:url value="/resources/customer" var="cssroot" />
+<%@ page contentType="text/html; charset=UTF-8" %>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="/home">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>    
-    </ul>
-  </div>  
-</nav>
+      <header class="header-global">
+         <nav id="navbar-main" class="navbar navbar-main navbar-theme-primary navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-transparent navbar-theme-primary">
+            <div class="container">
+               <a class="navbar-brand @@logo_classes" href="${cssroot}/index.html">
+                <img class="navbar-brand-dark common" src="${cssroot}/assets/img/brand/light.svg" height="35" alt="Logo light">
+                <img class="navbar-brand-light common" src="${cssroot}/assets/img/brand/dark.svg" height="35" alt="Logo dark">
+                </a>
+               <div class="d-none d-lg-block @@cta_button_classes">
+                <a href="#" target="_blank" class="btn btn-md btn-outline-white animate-up-2 mr-3">
+                  <i class="fas fa-book mr-1"></i>
+                  <span class="d-none d-xl-inline">Dành cho chủ sân</span>
+                </a>
+                <a href="#" target="_blank" class="btn btn-md btn-secondary animate-up-2">
+                  <i class="fas fa-shopping-bag mr-2"></i> Đăng nhập</a></div>
+               <div class="d-flex d-lg-none align-items-center"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button></div>
+            </div>
+         </nav>
+      </header>

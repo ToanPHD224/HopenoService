@@ -17,18 +17,19 @@ public interface ServiceService extends CrudEnties<Service>  {
 	public Page<Service> findAll(int page);
 	public Page<Service> findAllByRegistedAtAndStatus(Pageable page,Date date,int status);
 	public List<Service> findAllByStatus(int status);
-	public int registationService(String mail,long id);
+	public Integer registationService(String mail,long id);
 	public int declineService(long id,String mail);
 	public List<Service> findAllByMail(String mail,int status);
 	public List<Service> findAllByStatusAndId(int  status, long id);
-	public String getTotalBook( long id);
-	public String getTotalAmount(long id);
-	public int getToltalService(long id);
-	public String getAVGFee(long id);
+	public Integer getTotalBook( long id);
+	public Float getTotalAmount(long id);
+	public Integer getToltalService(long id);
+	public Float getAVGFee(long id);
 	public Service getService(long id);
 	public boolean getStatusOffService(long id);
 	public List<Service> findAllServiceAceptandActive(); 
 	public List<Service> findAllServiceAceptandActive(long id); 
-	public String countRegisterForm(Date date);
-	
+	public Integer countRegisterForm(Date date);
+	public List<Service> getAllServiceByType(long id);
+	public List<Service> getRandomService(long id);
 }

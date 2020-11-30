@@ -53,7 +53,7 @@ public class FeedBackServiceImpl implements FeedBackService {
 	}
 
 	@Override
-	public String getAVGRating(long id) {
+	public Integer getAVGRating(long id) {
 		// TODO Auto-generated method stub
 		return fbrepo.getAVGRating(id);
 	}

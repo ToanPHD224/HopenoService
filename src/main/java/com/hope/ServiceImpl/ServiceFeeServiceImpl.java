@@ -51,6 +51,12 @@ public  class ServiceFeeServiceImpl implements ServiceFeeService {
 		// TODO Auto-generated method stub
 		return servicefeerepo.findAll(pageable);
 	}
+
+	@Override
+	public List<ServiceFee> getAllServiceByStatus() {
+		// TODO Auto-generated method stub
+		return servicefeerepo.getAllServiceByStatus();
+	}
 	
 
 

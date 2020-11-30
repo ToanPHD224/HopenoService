@@ -41,17 +41,20 @@ public interface ServiceRepo extends JpaRepository<Service, Long> , PagingAndSor
 	public List<Service> findAllByMailAndStatus(String mail,int status);
 	public List<Service> findAllByStatusAndId(int status, long id);
 	@Query(value = "select COUNT(*) from payment  inner join sport_filed on payment.sport_field_id = sport_filed.id inner join service on sport_filed.service_id = service.id where service.id =:id ",nativeQuery  = true)
-	public String getTotalBook(@Param("id") long id);
-	@Query(value = "select sum(payment.amount) from payment  inner join sport_filed on payment.sport_field_id = sport_filed.id inner join service on sport_filed.service_id = service.id where service.id =:id",nativeQuery = true)
-	public String getTotalAmount(@Param("id") long id);
+	public Integer getTotalBook(@Param("id") long id);
+	@Query(value = "select COALESCE(sum(payment.amount),0) from payment  inner join sport_filed on payment.sport_field_id = sport_filed.id inner join service on sport_filed.service_id = service.id where service.id =:id",nativeQuery = true)
+	public Float getTotalAmount(@Param("id") long id);
 	@Query(value = "select COUNT(*) from service where account_id = :accountId",nativeQuery = true)
-	public int getToltalService(@Param("accountId")long accountId);
+	public Integer getToltalService(@Param("accountId")long accountId);
 	@Query(value = "select AVG(service_settings.amount) from service_settings where service_settings.service_id = :id",nativeQuery = true)
-	public String getAVGFee(@Param("id") long id);
+	public Float getAVGFee(@Param("id") long id);
 	@Query(value = "select  service.* from service inner join service_settings on service.id = service_settings.service_id where service.id = :id",nativeQuery = true)
 	public Service getService(@Param("id") long id);
 	@Query(value = "select count(*) from service where service.status = 0 and service.registered_at = :date",nativeQuery = true)
-	public String countRegisterForm(@Param("date") Date date);
-	
+	public Integer countRegisterForm(@Param("date") Date date);
+	@Query(value = "select * from service where service.service_fee_id = :id and service.status =3",nativeQuery = true)
+	List<Service> getAllServiceByType(@Param("id") long id);
+	@Query(value = "SELECT TOP 6 service.* FROM service where service.service_fee_id =:id ORDER BY NEWID()",nativeQuery = true)
+	public List<Service> getRandomService(@Param("id") long id);
 	
 }

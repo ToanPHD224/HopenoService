@@ -131,15 +131,10 @@ public class AdminController {
 		Service s = service.getById(id);
 		System.out.println(s.getStatus());
 		if (s.getStatus() != 0) {
-			String book = service.getTotalBook(id);
-			String totalAmout = service.getTotalAmount(id);
+			int book = service.getTotalBook(id);
+			float totalAmout = service.getTotalAmount(id);
 			float total = 0;
-			if (totalAmout != null) {
-				float amount = Float.parseFloat(totalAmout);
-				int booking = Integer.parseInt(book);
-				total = amount * ((float) (booking) / 100);
-				System.out.println(total);
-			}
+			total = totalAmout * ((float) (book) / 100);
 			List<FeedBack> getFeedBack = fbR.getTopFiveFeedBackByService(id);
 			md.addAttribute("listfeedback", getFeedBack);
 			md.addAttribute("service", s);
@@ -477,7 +472,7 @@ public class AdminController {
 		String book= this.s.countBook(date.getMonthValue());
 		String totalFee = this.s.countFee(date.getMonthValue());
 		String totalAccount = ac.countAcount();
-		String totalRegister = this.service.countRegisterForm(datesv.convetDatetoSql(LocalDate.now().toString()));
+		int totalRegister = this.service.countRegisterForm(datesv.convetDatetoSql(LocalDate.now().toString()));
 		md.addAttribute("book", book);
 		md.addAttribute("totalFee", totalFee);
 		md.addAttribute("totalAccount",totalAccount);
